@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -16,14 +17,14 @@
             color: #e0e0e0; /* Cor de texto clara para contraste */
         }
         .gradient-text {
-            background: linear-gradient(to right, #8A2BE2, #FF69B4, #4A90E2); /* Roxo, Rosa, Azul */
+            background: linear-gradient(to right, #8A2BE2,  #4A90E2); /* Roxo, Rosa, Azul */
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .hero-bg {
             background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.7)),
-                        url('https://placehold.co/1920x1080/1A1A2E/FFFFFF?text=Fundo+Abstrato+Criativo') center center/cover no-repeat;
+                        url('images/workstation-1.jpg') center center/cover no-repeat;
             /* Substitua a URL do placehold.co por uma imagem de fundo abstrata ou relacionada à sua área */
         }
         .section-bg {
@@ -96,18 +97,21 @@
             background-color: rgba(31, 31, 56, 0.95); /* card-bg com transparência */
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
+        p {
+            font-family: 'Josefin Sans', sans-serif;
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <nav id="navbar" class="fixed w-full z-50 top-0 py-3 md:py-4">
         <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
-            <a href="#" class="text-2xl md:text-3xl font-bold gradient-text">Seu Nome</a>
+            <a href="#" class="text-3xl md:text-4xl font-bold gradient-text ">Pedro Teles</a>
             <div class="hidden md:flex space-x-6">
-                <a href="#about" class="hover:text-pink-400 transition duration-300">Sobre</a>
-                <a href="#portfolio" class="hover:text-pink-400 transition duration-300">Portfólio</a>
-                <a href="#music" class="hover:text-pink-400 transition duration-300">Música</a>
-                <a href="#contact" class="hover:text-pink-400 transition duration-300">Contato</a>
+                <a href="#about" class="hover:text-blue-400 hover:font-semibold transition duration-1000">Sobre</a>
+                <a href="#portfolio" class="hover:text-blue-400 hover:font-semibold transition duration-1000">Portfólio</a>
+                <a href="#music" class="hover:text-blue-400 hover:font-semibold transition duration-1000">Música</a>
+                <a href="#contact" class="hover:text-blue-400 hover:font-semibold transition duration-1000">Contato</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
@@ -123,15 +127,30 @@
 
     <header id="hero" class="hero-bg min-h-screen flex items-center justify-center text-center px-4 pt-20 md:pt-0">
         <div class="max-w-3xl mx-auto fade-in-up">
-            <img src="https://placehold.co/150x150/FFFFFF/1A1A2E?text=Sua+Foto" alt="Sua Foto" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-purple-500 shadow-lg">
+            <img src="images/perfil-2.1.jpeg" alt="Sua Foto" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-purple-500 shadow-lg">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
-                Olá, sou <span class="gradient-text">Seu Nome</span>.
+                <span class="gradient-text">Pedro Teles</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-8 text-gray-300">
+            <p class="text-xl md:text-2xl mb-4 text-gray-300">
                 Especialista em <strong class="text-purple-400">Gestão de Produto</strong> & <strong class="text-pink-400">UX</strong>, apaixonado por criar experiências digitais impactantes e <strong class="text-blue-400">música inovadora</strong>.
             </p>
-            <a href="#portfolio" class="primary-button text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block mr-4 mb-4 md:mb-0">Ver Projetos</a>
-            <a href="#contact" class="tertiary-button font-semibold py-3 px-8 rounded-lg text-lg inline-block">Entre em Contato</a>
+            <div class="mb-4 flex justify-center space-x-6 text-3xl">
+                    <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/eusouopeu" target="_blank" class="text-purple-400 hover:text-purple-300 transition duration-300" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/eusouopeu/" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300" title="Instagram (Música)">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#portfolio" class="tertiary-button text-white font-semibold py-2 px-3 rounded-full text-lg inline-block mr-4 mb-4 md:mb-0">
+                        <i class="fab fa-download"></i>
+                        CV
+                    </a>
+                </div>
+                <a href="#portfolio" class="primary-button text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block mr-4 mb-4 md:mb-0">Projetos</a>
+                <a href="#contact" class="secondary-button font-semibold py-3 px-8 rounded-lg text-lg inline-block">Entre em Contato</a>
         </div>
     </header>
 
@@ -140,7 +159,7 @@
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text fade-in-up">Sobre Mim</h2>
             <div class="grid md:grid-cols-2 gap-10 items-center">
                 <div class="fade-in-up" style="animation-delay: 0.2s;">
-                    <img src="https://placehold.co/600x400/24243E/FFFFFF?text=Imagem+Profissional+ou+Abstrata" alt="Sobre mim" class="rounded-lg shadow-xl w-full">
+                    <img src="images/perfil-1.1.jpeg" alt="Sobre mim" class="rounded-lg shadow-xl w-full">
                      </div>
                 <div class="fade-in-up" style="animation-delay: 0.4s;">
                     <p class="text-lg mb-4 text-gray-300">
@@ -168,6 +187,193 @@
         </div>
     </section>
 
+    </section> <section id="skills" class="py-16 md:py-24"> <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in-up">Habilidades</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-12">
+
+                <div class="fade-in-up card-bg p-6 rounded-lg shadow-xl" style="animation-delay: 0.2s;">
+                    <h3 class="text-2xl font-semibold mb-6 text-center text-purple-400">Design / Front-end </h3>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Figma</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Tailwind</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star text-gray-600"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">React.js</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Next.js</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Flutter</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up card-bg p-6 rounded-lg shadow-xl" style="animation-delay: 0.4s;">
+                    <h3 class="text-2xl font-semibold mb-6 text-center text-pink-400">Dados</h3>
+                    <div class="mb-5 flex justify-between items-center">
+                    <span class="cols-1 text font-medium text-gray-200 block mb-1">Pesquisa Quantitativa</span>
+                        <div class="cols-2 flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                    <span class="cols-1 text-lg font-medium text-gray-200 block mb-1">Excel</span>
+                        <div class="cols-2 flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                    <span class="cols-1 text-lg font-medium text-gray-200 block mb-1">SQL</span>
+                        <div class="cols-2 flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="font-medium text-gray-200 block mb-1">Comunicação Efetiva</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                <div class="fade-in-up card-bg p-6 rounded-lg shadow-xl" style="animation-delay: 0.6s;">
+                    <h3 class="text-2xl font-semibold mb-6 text-center text-blue-400">Idiomas</h3>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Português</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Inglês</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Italiano</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Espanhol</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-200 block mb-1">Mandarim</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 text-lg">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                                <i class="far fa-star text-gray-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+
     <section id="portfolio" class="py-16 md:py-24">
         <div class="container mx-auto px-4 md:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text fade-in-up">Portfólio de Projetos</h2>
@@ -175,49 +381,85 @@
                 <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 0.2s;">
                     <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Projeto+1" alt="Projeto 1" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-purple-300">Nome do Projeto 1 (Produto/UX)</h3>
-                        <p class="text-sm text-gray-400 mb-3">Breve descrição do projeto, seu papel e as tecnologias ou metodologias chave utilizadas.</p>
-                        <a href="#" class="tertiary-button text-sm font-medium py-2 px-4 rounded-md inline-block">Ver Detalhes</a>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-300">Calculadora de Acordes e Progressões</h3>
+                         <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Dashboards</span>
+                        <span class="bg-blue-400 text-white px-3 py-1 rounded-full text-sm">Dados</span>
+                        <p class="mt-2 text-sm text-gray-400 mb-3">Breve descrição do projeto, seu papel e as tecnologias ou metodologias chave utilizadas.</p>
+                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
+                            <i class="fab fa-download"></i>
+                            Protótipo
+                        </a>
+                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
                     </div>
                 </div>
                 <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 0.4s;">
                     <img src="https://placehold.co/600x400/FF69B4/FFFFFF?text=Projeto+2" alt="Projeto 2" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-pink-300">Nome do Projeto 2 (UX Research)</h3>
-                        <p class="text-sm text-gray-400 mb-3">Destaque um case de pesquisa, os insights gerados e o impacto no produto/serviço.</p>
-                        <a href="#" class="tertiary-button text-sm font-medium py-2 px-4 rounded-md inline-block">Ver Detalhes</a>
+                        <h3 class="text-xl font-semibold mb-2 text-pink-300">Projatch</h3>
+                         <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Product Management</span>
+                        <span class="bg-pink-400 text-white px-3 py-1 rounded-full text-sm">UX Design</span>
+                        <p class="mt-2 text-sm text-gray-400 mb-3">Destaque um case de pesquisa, os insights gerados e o impacto no produto/serviço.</p>
+                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
+                            <i class="fab fa-download"></i>
+                            Protótipo
+                        </a>
+                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
                     </div>
                 </div>
                 <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 0.6s;">
                     <img src="https://placehold.co/600x400/4A90E2/FFFFFF?text=Projeto+3" alt="Projeto 3" class="w-full h-48 object-cover">
                      <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-blue-300">Nome do Projeto 3 (Produto/Gestão)</h3>
-                        <p class="text-sm text-gray-400 mb-3">Um projeto onde sua gestão foi fundamental, os desafios superados e os resultados alcançados.</p>
-                        <a href="#" class="tertiary-button text-sm font-medium py-2 px-4 rounded-md inline-block">Ver Detalhes</a>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-300">EcoAlert</h3>
+                         <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Product Management</span>
+                        <span class="bg-pink-400 text-white px-3 py-1 rounded-full text-sm">UX Design</span>
+                        <p class="mt-2 text-sm text-gray-400 mb-3">Um projeto onde sua gestão foi fundamental, os desafios superados e os resultados alcançados.</p>
+                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
+                            <i class="fab fa-download"></i>
+                            Protótipo
+                        </a>
+                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
                     </div>
                 </div>
                 <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 0.8s;">
                     <img src="https://placehold.co/600x400/6A5ACD/FFFFFF?text=Projeto+4" alt="Projeto 4" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-purple-400">Nome do Projeto 4 (UX Design System)</h3>
-                        <p class="text-sm text-gray-400 mb-3">Desenvolvimento e implementação de um Design System para otimizar a consistência e eficiência.</p>
-                        <a href="#" class="tertiary-button text-sm font-medium py-2 px-4 rounded-md inline-block">Ver Detalhes</a>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-400">Sucesso no Impacto</h3>
+                         <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">UX Research</span>
+                        <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Música</span>
+                        <p class="mt-2 text-sm text-gray-400 mb-3">Desenvolvimento e implementação de um Design System para otimizar a consistência e eficiência.</p>
+                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
+                            <i class="fab fa-download"></i>
+                            Dashboard
+                        </a>
+                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
                     </div>
                 </div>
                 <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 1.0s;">
                     <img src="https://placehold.co/600x400/DB7093/FFFFFF?text=Projeto+5" alt="Projeto 5" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-pink-400">Nome do Projeto 5 (Product Discovery)</h3>
-                        <p class="text-sm text-gray-400 mb-3">Condução de um processo de Product Discovery para identificar novas oportunidades de mercado.</p>
-                        <a href="#" class="tertiary-button text-sm font-medium py-2 px-4 rounded-md inline-block">Ver Detalhes</a>
+                        <h3 class="text-xl font-semibold mb-2 text-pink-400">Estudo de Hit'abilidade: Grammy Latino</h3>
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">UX Research</span>
+                        <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Música</span>
+                        <p class="mt-2 text-sm text-gray-400 mb-3">Condução de um processo de Product Discovery para identificar novas oportunidades de mercado.</p>
+                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
+                            <i class="fab fa-download"></i>
+                            Dashboard
+                        </a>
+                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
                     </div>
                 </div>
                 <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 1.2s;">
                     <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=Projeto+6" alt="Projeto 6" class="w-full h-48 object-cover">
                      <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-blue-400">Nome do Projeto 6 (App Mobile Inovador)</h3>
-                        <p class="text-sm text-gray-400 mb-3">Liderança no desenvolvimento de um aplicativo mobile com foco em experiência do usuário e gamificação.</p>
-                        <a href="#" class="tertiary-button text-sm font-medium py-2 px-4 rounded-md inline-block">Ver Detalhes</a>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-400">e-PRU (Passe Rapido RU)</h3>
+                         <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Product Management</span>
+                        <span class="bg-pink-400 text-white px-3 py-1 rounded-full text-sm">UX Design</span>
+                        <p class="mt-2 text-sm text-gray-400 mb-3">Liderança no desenvolvimento de um aplicativo mobile com foco em experiência do usuário e gamificação.</p>
+                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
+                            <i class="fab fa-download"></i>
+                            Protótipo
+                        </a>
+                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
                     </div>
                 </div>
             </div>
@@ -281,13 +523,13 @@
                     <i class="fas fa-envelope mr-2"></i> Enviar Email
                 </a>
                 <div class="flex justify-center space-x-6 text-3xl">
-                    <a href="https://linkedin.com/in/seu-linkedin" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300" title="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/seu-github" target="_blank" class="text-purple-400 hover:text-purple-300 transition duration-300" title="GitHub">
+                    <a href="https://github.com/eusouopeu" target="_blank" class="text-purple-400 hover:text-purple-300 transition duration-300" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://instagram.com/seu-instagram-musical" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300" title="Instagram (Música)">
+                    <a href="https://www.instagram.com/eusouopeu/" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300" title="Instagram (Música)">
                         <i class="fab fa-instagram"></i>
                     </a>
                     </div>
@@ -297,8 +539,7 @@
 
     <footer class="py-8 section-bg border-t border-gray-700">
         <div class="container mx-auto px-4 md:px-8 text-center text-gray-400">
-            <p>&copy; <span id="currentYear"></span> Seu Nome. Todos os direitos reservados.</p>
-            <p class="text-sm mt-1">Criatividade e Inovação em cada pixel e nota.</p>
+            <p>&copy; <span id="currentYear"></span> Pedro Teles. Todos os direitos reservados.</p>
         </div>
     </footer>
 
