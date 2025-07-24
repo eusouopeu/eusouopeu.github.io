@@ -1,621 +1,458 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Teles - Product Management | UX Research and Design | Música</title>
+    <title>Pedro Teles - Análise de Negócios & Produto</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Dark Theme (Default) */
+            --bg-primary: #0D1117;
+            --bg-secondary: #161B22;
+            --text-primary: #C9D1D9;
+            --text-secondary: #8B949E;
+            --border-color: #30363D;
+            --accent-color: #58A6FF;
+            --accent-gradient: linear-gradient(to right, #58A6FF, #3081F7);
+        }
+
+        .light-theme {
+            /* Light Theme */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F6F8FA;
+            --text-primary: #24292F;
+            --text-secondary: #57606A;
+            --border-color: #D0D7DE;
+            --accent-color: #0969DA;
+            --accent-gradient: linear-gradient(to right, #0969DA, #0366D6);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a1a2e; /* Um azul bem escuro, quase preto, para base */
-            color: #e0e0e0; /* Cor de texto clara para contraste */
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .gradient-text {
-            background: linear-gradient(to right, #8A2BE2,  #4A90E2); /* Roxo, Rosa, Azul */
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .hero-bg {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.7)),
-                        url('images/workstation-1.jpg') center center/cover no-repeat;
-            /* Substitua a URL do placehold.co por uma imagem de fundo abstrata ou relacionada à sua área */
+            background-color: var(--bg-primary);
+            background-image: radial-gradient(circle at 1px 1px, var(--bg-secondary) 1px, transparent 0);
+            background-size: 20px 20px;
         }
         .section-bg {
-            background-color: #24243e; /* Um tom ligeiramente mais claro que o body */
+            background-color: var(--bg-secondary);
         }
         .card-bg {
-            background-color: #1f1f38; /* Um pouco mais escuro que section-bg, para profundidade */
-            border: 1px solid #3b3b58; /* Borda sutil */
-        }
-        .primary-button {
-            background: linear-gradient(to right, #8A2BE2, #6A5ACD); /* Gradiente Roxo */
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
-        .primary-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+        .card-bg:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
         }
         .secondary-button {
-            background: linear-gradient(to right, #FF69B4, #DB7093); /* Gradiente Rosa */
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
             transition: all 0.3s ease;
         }
         .secondary-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
+            background-color: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-color);
         }
-        .tertiary-button {
-            border: 2px solid #4A90E2; /* Azul para borda */
-            color: #4A90E2;
-            transition: all 0.3s ease;
+        .tag {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(88, 166, 255, 0.3);
         }
-        .tertiary-button:hover {
-            background-color: #4A90E2;
-            color: #FFFFFF;
+        .light-theme .tag {
+            background-color: rgba(9, 105, 218, 0.1);
+            border: 1px solid rgba(9, 105, 218, 0.2);
         }
 
-        /* Animação de entrada suave */
         .fade-in-up {
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Custom scrollbar (opcional, para um toque mais moderno) */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1a1a2e;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4A90E2;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8A2BE2;
-        }
-
-        /* Navbar styling */
-        nav {
-            transition: background-color 0.3s ease-in-out;
-        }
         nav.scrolled {
-            background-color: rgba(31, 31, 56, 0.95); /* card-bg com transparência */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background-color: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
         }
-        p {
-            font-family: 'Josefin Sans', sans-serif;
+        .light-theme nav.scrolled {
+             background-color: rgba(255, 255, 255, 0.85);
         }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--border-color);
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent; /* Remove border on last item */
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 3px solid var(--bg-secondary);
+        }
+        
+        /* Carousel Styles */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll 60s linear infinite;
+        }
+        .carousel-wrapper:hover .animate-scroll {
+            animation-play-state: paused;
+        }
+
     </style>
 </head>
 <body class="antialiased">
 
-    <nav id="navbar" class="fixed w-full z-50 top-0 py-3 md:py-4">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 py-3 md:py-4 transition-all duration-300">
         <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
-            <a href="#" class="text-3xl md:text-4xl font-bold gradient-text ">Pedro Teles</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="#about" class="hover:text-blue-400 hover:font-semibold transition duration-1000">Sobre</a>
-                <a href="#portfolio" class="hover:text-blue-400 hover:font-semibold transition duration-1000">Portfólio</a>
-                <a href="#music" class="hover:text-blue-400 hover:font-semibold transition duration-1000">Música</a>
-                <a href="#contact" class="hover:text-blue-400 hover:font-semibold transition duration-1000">Contato</a>
+            <a href="#" class="text-2xl md:text-3xl font-bold gradient-text">Pedro Teles</a>
+            <div class="hidden md:flex items-center space-x-6 text-base">
+                <a href="#about" class="hover:text-blue-400 transition duration-300" data-lang-pt="Sobre" data-lang-en="About">Sobre</a>
+                <a href="#portfolio" class="hover:text-blue-400 transition duration-300" data-lang-pt="Projetos" data-lang-en="Projects">Projetos</a>
+                <a href="#certificates" class="hover:text-blue-400 transition duration-300" data-lang-pt="Certificados" data-lang-en="Certificates">Certificados</a>
+                <a href="#skills" class="hover:text-blue-400 transition duration-300" data-lang-pt="Habilidades" data-lang-en="Skills">Habilidades</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <div class="flex items-center gap-4">
+                 <button id="theme-toggle" class="text-xl hover:text-blue-400 transition-colors duration-300"><i class="fas fa-sun"></i></button>
+                 <button id="lang-toggle" class="text-sm font-semibold hover:text-blue-400 transition-colors duration-300">EN</button>
+                 <button id="mobile-menu-button" class="md:hidden focus:outline-none text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 bg-opacity-90">
-            <a href="#about" class="block py-3 px-4 text-sm hover:bg-purple-600 transition duration-300">Sobre</a>
-            <a href="#portfolio" class="block py-3 px-4 text-sm hover:bg-purple-600 transition duration-300">Portfólio</a>
-            <a href="#music" class="block py-3 px-4 text-sm hover:bg-purple-600 transition duration-300">Música</a>
-            <a href="#contact" class="block py-3 px-4 text-sm hover:bg-purple-600 transition duration-300">Contato</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 bg-opacity-95">
+             <a href="#about" class="block py-3 px-4 text-sm hover:bg-blue-600" data-lang-pt="Sobre" data-lang-en="About">Sobre</a>
+             <a href="#portfolio" class="block py-3 px-4 text-sm hover:bg-blue-600" data-lang-pt="Projetos" data-lang-en="Projects">Projetos</a>
+             <a href="#certificates" class="block py-3 px-4 text-sm hover:bg-blue-600" data-lang-pt="Certificados" data-lang-en="Certificates">Certificados</a>
+             <a href="#skills" class="block py-3 px-4 text-sm hover:bg-blue-600" data-lang-pt="Habilidades" data-lang-en="Skills">Habilidades</a>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header id="hero" class="hero-bg min-h-screen flex items-center justify-center text-center px-4 pt-20 md:pt-0">
-        <div class="max-w-3xl mx-auto fade-in-up">
-            <img src="images/perfil-2.1.jpeg" alt="Sua Foto" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-purple-500 shadow-lg">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
-                <span class="gradient-text">Pedro Teles</span>
-            </h1>
-            <p class="text-xl md:text-2xl mb-4 text-gray-300">
-                Especialista em <strong class="text-purple-400">Gestão de Produto</strong> & <strong class="text-pink-400">UX</strong>, apaixonado por criar experiências digitais impactantes e <strong class="text-blue-400">música inovadora</strong>.
-            </p>
-            <div class="mb-4 flex justify-center space-x-6 text-3xl">
-                    <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/eusouopeu" target="_blank" class="text-purple-400 hover:text-purple-300 transition duration-300" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/eusouopeu/" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300" title="Instagram (Música)">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#portfolio" class="tertiary-button text-white font-semibold py-2 px-3 rounded-full text-lg inline-block mr-4 mb-4 md:mb-0">
-                        <i class="fab fa-download"></i>
-                        CV
-                    </a>
+        <div class="max-w-4xl mx-auto fade-in-up">
+            <img src="images/profile-square.png" alt="Pedro Teles" class="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto mb-6 border-4 border-gray-700 shadow-lg">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-gray-100 gradient-text" data-lang-pt="Pedro Teles" data-lang-en=""><span class="gradient-text">Pedro Teles</span>.</h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-400" data-lang-pt="Análise de Negócios | Gestão de Produto | Business Intelligence" data-lang-en="Business Analysis | Product Management | Business Intelligence">Análise de Negócios | Gestão de Produto | Business Intelligence</p>
+            <div class="flex justify-center items-center gap-6">
+                <div class="flex justify-center space-x-6 text-3xl">
+                    <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/eusouopeu" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/eusouopeu/" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300" title="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
-                <a href="#portfolio" class="primary-button text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block mr-4 mb-4 md:mb-0">Projetos</a>
-                <a href="#contact" class="secondary-button font-semibold py-3 px-8 rounded-lg text-lg inline-block">Entre em Contato</a>
+                <a href="certificates/Curriculo-PedroTeles.pdf" download="Curriculo_PedroTeles.pdf" class="secondary-button font-semibold py-3 px-8 border-4 rounded-lg text-lg" data-lang-pt="Baixar CV" data-lang-en="Download CV">Baixar CV</a>
+            </div>
         </div>
     </header>
 
-    <section id="about" class="py-16 md:py-24 section-bg">
-        <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text fade-in-up">Sobre Mim</h2>
-            <div class="grid md:grid-cols-2 gap-10 items-center">
-                <div class="fade-in-up" style="animation-delay: 0.2s;">
-                    <img src="images/perfil-1.1.jpeg" alt="Sobre mim" class="rounded-lg shadow-xl w-full">
+    <main>
+        <!-- About & Experience Section -->
+        <section id="about" class="py-16 md:py-24 section-bg">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="grid md:grid-cols-5 gap-16 items-start">
+                    <!-- About Me Column -->
+                    <div class="md:col-span-2 fade-in-up">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-8 gradient-text" data-lang-pt="Sobre Mim" data-lang-en="About Me">Sobre Mim</h2>
+                        <div class="space-y-4 text-lg">
+                            <p data-lang-pt="Estudante de Administração na Universidade Federal da Bahia (UFBA), com perfil analítico, multidisciplinar e orientado a resultados." data-lang-en="Administration student at the Federal University of Bahia (UFBA), with an analytical, multidisciplinary, and results-oriented profile.">Estudante de Administração na <strong class="text-blue-400">Universidade Federal da Bahia (UFBA)</strong>, com perfil analítico, multidisciplinar e orientado a resultados.</p>
+                            <p data-lang-pt="Busco ativamente oportunidades de estágio nas áreas de Análise de Negócios ou Produto, onde posso aplicar e expandir minhas habilidades para gerar valor." data-lang-en="I am actively seeking internship opportunities in Business Analysis or Product, where I can apply and expand my skills to generate value.">Busco ativamente oportunidades de estágio nas áreas de <strong class="text-blue-400">Análise de Negócios</strong> ou <strong class="text-blue-400">Produto</strong>, onde posso aplicar e expandir minhas habilidades para gerar valor.</p>
+                            <p data-lang-pt="Minha paixão por tecnologia e negócios me motiva a conectar a visão estratégica com a execução prática para criar soluções inovadoras." data-lang-en="My passion for technology and business motivates me to connect strategic vision with practical execution to create innovative solutions.">Minha paixão por tecnologia e negócios me motiva a conectar a visão estratégica com a execução prática para criar soluções inovadoras.</p>
+                        </div>
+                    </div>
+                    <!-- Experience Column -->
+                    <div id="experience" class="md:col-span-3 fade-in-up" style="animation-delay: 0.2s;">
+                         <h2 class="text-3xl md:text-4xl font-bold mb-8 gradient-text" data-lang-pt="Experiência" data-lang-en="Experience">Experiência</h2>
+                         <div class="space-y-10">
+                            <div class="timeline-item">
+                                <p class="text-sm text-gray-400 mb-1" data-lang-pt="Agosto de 2024 - Janeiro de 2025" data-lang-en="August 2024 - January 2025">Agosto de 2024 - Janeiro de 2025</p>
+                                <h3 class="text-xl font-semibold text-blue-300" data-lang-pt="Gerente de Exomarketing" data-lang-en="Exomarketing Manager">Gerente de Exomarketing</h3>
+                                <p class="text-md text-gray-500 mb-3">Empresa Junior de Informatica da UFBA</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="text-sm text-gray-400 mb-1" data-lang-pt="Abril de 2024 - Julho de 2024" data-lang-en="April 2024 - July 2024">Abril de 2024 - Julho de 2024</p>
+                                <h3 class="text-xl font-semibold text-blue-300" data-lang-pt="Desenvolvedor Web (Trainee)" data-lang-en="Web Developer (Trainee)">Desenvolvedor Web (Trainee)</h3>
+                                <p class="text-md text-gray-500 mb-3">Empresa Junior de Informatica da UFBA</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="text-sm text-gray-400 mb-1" data-lang-pt="Setembro de 2023 - Junho de 2024" data-lang-en="September 2023 - June 2024">Setembro de 2023 - Junho de 2024</p>
+                                <h3 class="text-xl font-semibold text-blue-300" data-lang-pt="Presidente e Co-fundador" data-lang-en="President & Co-founder">Presidente e Co-fundador</h3>
+                                <p class="text-md text-gray-500 mb-3">Liga Acadêmica Transdisciplinar de Tecnologia e Inovação (LATTI) da UFBA</p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 md:py-24">
+            <div class="container mx-auto px-4 md:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in-up" data-lang-pt="Projetos & Protótipos" data-lang-en="Projects & Prototypes">Projetos & Protótipos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-bg rounded-lg overflow-hidden fade-in-up" style="animation-delay: 0.2s;">
+                        <img src="https://placehold.co/600x400/161B22/58A6FF?text=Projeto+1" alt="Imagem do Projeto 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-lang-pt="Nome do Projeto 1" data-lang-en="Project Name 1">Nome do Projeto 1</h3>
+                            <p class="text-sm text-gray-400 mb-4" data-lang-pt="Breve descrição do projeto, seu papel e as tecnologias ou metodologias chave utilizadas." data-lang-en="Brief description of the project, your role, and the key technologies or methodologies used.">Breve descrição do projeto, seu papel e as tecnologias ou metodologias chave utilizadas.</p>
+                            <a href="#" target="_blank" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block" data-lang-pt="Ver Projeto" data-lang-en="View Project">Ver Projeto</a>
+                        </div>
+                    </div>
+                    <div class="card-bg rounded-lg overflow-hidden fade-in-up" style="animation-delay: 0.4s;">
+                        <img src="https://placehold.co/600x400/161B22/58A6FF?text=Protótipo+2" alt="Imagem do Protótipo 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-lang-pt="Nome do Protótipo 2" data-lang-en="Prototype Name 2">Nome do Protótipo 2</h3>
+                            <p class="text-sm text-gray-400 mb-4" data-lang-pt="Destaque um protótipo de alta fidelidade feito no Figma, os problemas que ele resolve e o processo de design." data-lang-en="Highlight a high-fidelity prototype from Figma, the problems it solves, and the design process.">Destaque um protótipo de alta fidelidade feito no Figma, os problemas que ele resolve e o processo de design.</p>
+                            <a href="#" target="_blank" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block" data-lang-pt="Ver no Figma" data-lang-en="View on Figma">Ver no Figma</a>
+                        </div>
+                    </div>
+                    <div class="card-bg rounded-lg overflow-hidden fade-in-up" style="animation-delay: 0.6s;">
+                        <img src="https://placehold.co/600x400/161B22/58A6FF?text=Projeto+3" alt="Imagem do Projeto 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-lang-pt="Nome do Projeto 3" data-lang-en="Project Name 3">Nome do Projeto 3</h3>
+                            <p class="text-sm text-gray-400 mb-4" data-lang-pt="Um projeto pessoal ou acadêmico onde você aplicou conceitos de análise de negócios ou produto." data-lang-en="A personal or academic project where you applied business or product analysis concepts.">Um projeto pessoal ou acadêmico onde você aplicou conceitos de análise de negócios ou produto.</p>
+                            <a href="#" target="_blank" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block" data-lang-pt="Ver Detalhes" data-lang-en="View Details">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificates" class="py-16 md:py-24 section-bg">
+            <div class="container mx-auto px-4 md:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in-up" data-lang-pt="Certificados & Cursos" data-lang-en="Certificates & Courses">Certificados & Cursos</h2>
+                <div class="carousel-wrapper w-full overflow-hidden relative fade-in-up" style="animation-delay: 0.2s;">
+                     <div class="flex animate-scroll" id="carousel-scroller">
+                        <!-- Cards will be dynamically inserted here by JS -->
                      </div>
-                <div class="fade-in-up" style="animation-delay: 0.4s;">
-                    <p class="text-lg mb-4 text-gray-300">
-                        Com uma sólida trajetória em <strong class="text-purple-400">Gestão de Produto</strong>, foco em traduzir visões estratégicas em produtos digitais que encantam usuários e geram resultados. Minha abordagem é centrada no usuário, combinando <strong class="text-pink-400">UX Design</strong> e <strong class="text-pink-400">UX Research</strong> para criar soluções intuitivas e eficazes.
-                    </p>
-                    <p class="text-lg mb-4 text-gray-300">
-                        Busco constantemente inovação, aplicando metodologias ágeis e data-driven decision making para otimizar o ciclo de vida do produto. Acredito que a empatia e a colaboração são chaves para o sucesso.
-                    </p>
-                    <p class="text-lg text-gray-300">
-                        Paralelamente, a <strong class="text-blue-400">produção musical</strong> é minha válvula de escape criativa, onde exploro novas sonoridades e narrativas. Essa dualidade entre a lógica da gestão e a liberdade da arte enriquece minha perspectiva profissional.
-                    </p>
-                    <div class="mt-8">
-                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Principais Habilidades:</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Product Management</span>
-                            <span class="bg-pink-600 text-white px-3 py-1 rounded-full text-sm">UX Design</span>
-                            <span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm">UX Research</span>
-                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">Metodologias Ágeis</span>
-                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">Strategy</span>
-                            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">Music Production</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 md:py-24">
+            <div class="container mx-auto px-4 md:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in-up" data-lang-pt="Habilidades & Competências" data-lang-en="Skills & Competencies">Habilidades & Competências</h2>
+                <div class="flex flex-col lg:flex-row gap-8 max-w-4xl mx-auto">
+                    <!-- Technical Skills -->
+                    <div class="card-bg p-8 rounded-lg fade-in-up hover:border-emerald" style="animation-delay: 0.2s;">
+                        <h3 class="text-2xl font-semibold mb-6 text-center text-blue-300" data-lang-pt="Analise de Negócios" data-lang-en="Business Analysis">Analise de Negócios</h3>
+                        <div class="space-y-6">
+                            <div class="flex flex-col items-center">
+                                <h4 class="font-bold text-lg mb-2" data-lang-pt="Softwares e Linguagens" data-lang-en="Softwares and Languages">Softwares e Linguagens</h4>
+                                <div class="flex flex-wrap gap-2"><span class="tag text-sm py-1 px-3 rounded-full">Excel</span><span class="tag text-sm py-1 px-3 rounded-full">Notion</span><span class="tag text-sm py-1 px-3 rounded-full">SQL</span><span class="tag text-sm py-1 px-3 rounded-full">Python</span></div>
+                            </div>
+                            <hr class="border-gray-700">
+                            <div class="flex flex-col items-center">
+                                <h4 class="font-bold text-lg mb-2" data-lang-pt="Técnicas e Processos" data-lang-en="Techniques e Processes">Técnicas e Processos</h4>
+                                <div class="flex flex-wrap gap-2"><span class="tag text-sm py-1 px-3 rounded-full">Análise Estratégica</span><span class="tag text-sm py-1 px-3 rounded-full">Levantamento de Requisitos</span><span class="tag text-sm py-1 px-3 rounded-full">Modelagem de Processos</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Technical Skills -->
+                    <div class="card-bg p-8 rounded-lg fade-in-up" style="animation-delay: 0.2s;">
+                        <h3 class="text-2xl font-semibold mb-6 text-center text-blue-300" data-lang-pt="Gestão de Produto" data-lang-en="Product Management">Gestão de Produto</h3>
+                        <div class="space-y-6">
+                            <div class="flex flex-col items-center">
+                                <h4 class="font-bold text-lg mb-2" data-lang-pt="Softwares e Linguagens" data-lang-en="Softwares and Languages">Softwares e Linguagens</h4>
+                                <div class="flex flex-wrap gap-2"><span class="tag text-sm py-1 px-3 rounded-full">Canva</span><span class="tag text-sm py-1 px-3 rounded-full">Figma</span><span class="tag text-sm py-1 px-3 rounded-full">Tailwind</span><span class="tag text-sm py-1 px-3 rounded-full">React</span><span class="tag text-sm py-1 px-3 rounded-full">Next.js</span></div>
+                            </div>
+                            <hr class="border-gray-700">
+                            <div class="flex flex-col items-center" >
+<h4 class="font-bold text-lg mb-2" data-lang-pt="Métodos e Técnicas" data-lang-en="Methods and Techniques">Técnicas e Processos</h4>                                
+<div class="flex flex-wrap gap-2"><span class="tag text-sm py-1 px-3 rounded-full">Scrum</span><span class="tag text-sm py-1 px-3 rounded-full">Planejamento Estratégico</span><span class="tag text-sm py-1 px-3 rounded-full">Roadmaps</span><span class="tag text-sm py-1 px-3 rounded-full">UX Research</span><span class="tag text-sm py-1 px-3 rounded-full">A/B Testing</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Languages -->
+                    <div class="card-bg p-8 rounded-lg fade-in-up" style="animation-delay: 0.4s;">
+                        <h3 class="text-2xl font-semibold mb-6 text-center text-blue-300" data-lang-pt="Idiomas" data-lang-en="Languages">Idiomas</h3>
+                        <div class="space-y-4">
+                            <div class="text-center">
+                                <p class="text-xl font-bold" data-lang-pt="Inglês" data-lang-en="English">Inglês</p>
+                                <p class="text-md text-gray-400" data-lang-pt="Avançado (C1)" data-lang-en="Advanced (C1)">Avançado (C1)</p>
+                            </div>
+                             <hr class="border-gray-700">
+                            <div class="text-center">
+                                <p class="text-xl font-bold" data-lang-pt="Italiano" data-lang-en="Italian">Italiano</p>
+                                <p class="text-md text-gray-400" data-lang-pt="Avançado (C1)" data-lang-en="Advanced (C1)">Avançado (C1)</p>
+                            </div>
+                             <hr class="border-gray-700">
+                            <div class="text-center">
+                                <p class="text-xl font-bold" data-lang-pt="Mandarim" data-lang-en="Mandarin">Mandarim</p>
+                                <p class="text-md text-gray-400" data-lang-pt="Básico (HSK-2)" data-lang-en="Basic (HSK-2)">Básico (HSK-2)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    </section> <section id="skills" class="py-16 md:py-24"> <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in-up">Habilidades</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-12">
-
-                <div class="fade-in-up card-bg p-6 rounded-lg shadow-xl" style="animation-delay: 0.2s;">
-                    <h3 class="text-2xl font-semibold mb-6 text-center text-purple-400">Design / Front-end </h3>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Figma</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Tailwind</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star text-gray-600"></i>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">React.js</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Next.js</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Flutter</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="fade-in-up card-bg p-6 rounded-lg shadow-xl" style="animation-delay: 0.4s;">
-                    <h3 class="text-2xl font-semibold mb-6 text-center text-pink-400">Dados</h3>
-                    <div class="mb-5 flex justify-between items-center">
-                    <span class="cols-1 text font-medium text-gray-200 block mb-1">Pesquisa Quantitativa</span>
-                        <div class="cols-2 flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                    <span class="cols-1 text-lg font-medium text-gray-200 block mb-1">Excel</span>
-                        <div class="cols-2 flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                    <span class="cols-1 text-lg font-medium text-gray-200 block mb-1">SQL</span>
-                        <div class="cols-2 flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="font-medium text-gray-200 block mb-1">Comunicação Efetiva</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-
-                <div class="fade-in-up card-bg p-6 rounded-lg shadow-xl" style="animation-delay: 0.6s;">
-                    <h3 class="text-2xl font-semibold mb-6 text-center text-blue-400">Idiomas</h3>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Português</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Inglês</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Italiano</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Espanhol</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-5 flex justify-between items-center">
-                        <span class="text-lg font-medium text-gray-200 block mb-1">Mandarim</span>
-                        <div class="flex items-center">
-                            <div class="flex text-yellow-400 text-lg">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                                <i class="far fa-star text-gray-600"></i>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-            </div>
-        </div>
-
-    <section id="portfolio" class="py-16 md:py-24">
-        <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text fade-in-up">Portfólio de Projetos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 0.2s;">
-                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Projeto+1" alt="Projeto 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-purple-300">Calculadora de Acordes e Progressões</h3>
-                         <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Dashboards</span>
-                        <span class="bg-blue-400 text-white px-3 py-1 rounded-full text-sm">Dados</span>
-                        <p class="mt-2 text-sm text-gray-400 mb-3">Breve descrição do projeto, seu papel e as tecnologias ou metodologias chave utilizadas.</p>
-                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
-                            <i class="fab fa-download"></i>
-                            Protótipo
-                        </a>
-                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
-                    </div>
-                </div>
-                <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 0.4s;">
-                    <img src="https://placehold.co/600x400/FF69B4/FFFFFF?text=Projeto+2" alt="Projeto 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-pink-300">Projatch</h3>
-                         <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Product Management</span>
-                        <span class="bg-pink-400 text-white px-3 py-1 rounded-full text-sm">UX Design</span>
-                        <p class="mt-2 text-sm text-gray-400 mb-3">Destaque um case de pesquisa, os insights gerados e o impacto no produto/serviço.</p>
-                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
-                            <i class="fab fa-download"></i>
-                            Protótipo
-                        </a>
-                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
-                    </div>
-                </div>
-                <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 0.6s;">
-                    <img src="https://placehold.co/600x400/4A90E2/FFFFFF?text=Projeto+3" alt="Projeto 3" class="w-full h-48 object-cover">
-                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-blue-300">EcoAlert</h3>
-                         <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Product Management</span>
-                        <span class="bg-pink-400 text-white px-3 py-1 rounded-full text-sm">UX Design</span>
-                        <p class="mt-2 text-sm text-gray-400 mb-3">Um projeto onde sua gestão foi fundamental, os desafios superados e os resultados alcançados.</p>
-                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
-                            <i class="fab fa-download"></i>
-                            Protótipo
-                        </a>
-                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
-                    </div>
-                </div>
-                <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 0.8s;">
-                    <img src="https://placehold.co/600x400/6A5ACD/FFFFFF?text=Projeto+4" alt="Projeto 4" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-purple-400">Sucesso no Impacto</h3>
-                         <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">UX Research</span>
-                        <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Música</span>
-                        <p class="mt-2 text-sm text-gray-400 mb-3">Desenvolvimento e implementação de um Design System para otimizar a consistência e eficiência.</p>
-                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
-                            <i class="fab fa-download"></i>
-                            Dashboard
-                        </a>
-                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
-                    </div>
-                </div>
-                <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 1.0s;">
-                    <img src="https://placehold.co/600x400/DB7093/FFFFFF?text=Projeto+5" alt="Projeto 5" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-pink-400">Estudo de Hit'abilidade: Grammy Latino</h3>
-                        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">UX Research</span>
-                        <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Música</span>
-                        <p class="mt-2 text-sm text-gray-400 mb-3">Condução de um processo de Product Discovery para identificar novas oportunidades de mercado.</p>
-                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
-                            <i class="fab fa-download"></i>
-                            Dashboard
-                        </a>
-                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
-                    </div>
-                </div>
-                <div class="card-bg rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-up" style="animation-delay: 1.2s;">
-                    <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=Projeto+6" alt="Projeto 6" class="w-full h-48 object-cover">
-                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-blue-400">e-PRU (Passe Rapido RU)</h3>
-                         <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Product Management</span>
-                        <span class="bg-pink-400 text-white px-3 py-1 rounded-full text-sm">UX Design</span>
-                        <p class="mt-2 text-sm text-gray-400 mb-3">Liderança no desenvolvimento de um aplicativo mobile com foco em experiência do usuário e gamificação.</p>
-                        <a href="#" class="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">
-                            <i class="fab fa-download"></i>
-                            Protótipo
-                        </a>
-                        <a href="#" class="tertiary-button text-sm font-medium py-[6px] px-4 rounded-md inline-block">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="music" class="py-16 md:py-24 section-bg">
-        <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text fade-in-up">Minha Música</h2>
-            <div class="max-w-3xl mx-auto text-center fade-in-up" style="animation-delay: 0.2s;">
-                <p class="text-lg mb-8 text-gray-300">
-                    A música é uma extensão da minha criatividade. Aqui você pode encontrar algumas das minhas produções.
-                    Exploro gêneros como [Seus Gêneros Musicais] e busco criar atmosferas sonoras únicas.
-                </p>
-                <div class="mb-8 card-bg p-6 rounded-lg shadow-xl">
-                    <h3 class="text-xl font-semibold mb-4 text-blue-300">Ouça meu último single:</h3>
-                    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&color=%238a2be2&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-                        class="rounded-md"
-                        title="Exemplo de Player Soundcloud">
-                    </iframe>
-                    <p class="text-xs text-gray-500 mt-2">Substitua este embed pelo seu player do Soundcloud, Spotify, Bandcamp, etc.</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="card-bg p-6 rounded-lg shadow-xl fade-in-up" style="animation-delay: 0.4s;">
-                        <h4 class="text-lg font-semibold mb-2 text-purple-400">Plataformas Musicais</h4>
-                        <p class="text-sm text-gray-400 mb-3">Encontre minhas músicas em:</p>
-                        <div class="flex justify-center space-x-4">
-                            <a href="#" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300 text-2xl" title="Spotify"><i class="fab fa-spotify"></i></a>
-                            <a href="#" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300 text-2xl" title="Apple Music"><i class="fab fa-apple"></i></a>
-                            <a href="#" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300 text-2xl" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                            <a href="#" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300 text-2xl" title="YouTube Music"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-bg p-6 rounded-lg shadow-xl fade-in-up" style="animation-delay: 0.6s;">
-                        <h4 class="text-lg font-semibold mb-2 text-blue-400">Projetos Musicais Recentes</h4>
-                        <ul class="list-disc list-inside text-sm text-gray-400 text-left">
-                            <li>Nome da Música/Álbum 1 - Breve descrição</li>
-                            <li>Nome da Música/Álbum 2 - Breve descrição</li>
-                            <li>Colaboração com Artista X</li>
-                        </ul>
-                    </div>
-                </div>
-                 <div class="mt-10">
-                    <a href="#" class="secondary-button text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block">Mais Músicas</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-16 md:py-24">
-        <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text fade-in-up">Vamos Conversar</h2>
-            <div class="max-w-xl mx-auto text-center fade-in-up" style="animation-delay: 0.2s;">
-                <p class="text-lg mb-8 text-gray-300">
-                    Estou sempre aberto a novas oportunidades, colaborações ou apenas um bom bate-papo sobre produtos, UX e música.
-                    Sinta-se à vontade para entrar em contato!
-                </p>
-                <a href="mailto:seuemail@example.com" class="primary-button text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block mb-8">
-                    <i class="fas fa-envelope mr-2"></i> Enviar Email
-                </a>
-                <div class="flex justify-center space-x-6 text-3xl">
-                    <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/eusouopeu" target="_blank" class="text-purple-400 hover:text-purple-300 transition duration-300" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/eusouopeu/" target="_blank" class="text-pink-400 hover:text-pink-300 transition duration-300" title="Instagram (Música)">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <footer class="py-8 section-bg border-t border-gray-700">
-        <div class="container mx-auto px-4 md:px-8 text-center text-gray-400">
-            <p>&copy; <span id="currentYear"></span> Pedro Teles. Todos os direitos reservados.</p>
+        <div class="container mx-auto px-4 md:px-8 text-center text-gray-500">
+            <p>&copy; <span id="currentYear"></span> Pedro Caio Feitosa Teles. <span data-lang-pt="Todos os direitos reservados." data-lang-en="All rights reserved.">Todos os direitos reservados.</span></p>
+            <p class="text-sm mt-1" data-lang-pt="Desenvolvido com foco em clareza e impacto." data-lang-en="Developed with a focus on clarity and impact.">Desenvolvido com foco em clareza e impacto.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = menuButton.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Certificate Data ---
+            const certificates = [
+                { name_pt: 'Fund. Análise de Dados', name_en: 'Data Analysis Fund.', institution: 'Microsoft', hours_pt: '10 horas', hours_en: '10 hours', link: 'certificates/Certificado-Dados.pdf' },
+                { name_pt: 'Excel', name_en: 'Excel', institution: 'LinkedIn Learning', hours_pt: '4 horas', hours_en: '4 horas', link: 'certificates/Certificado-Excel-Essential-Training.pdf' },
+                { name_pt: 'SQL para Análise', name_en: 'SQL for Analysis', institution: 'Inst. de Computação UFBA', hours_pt: '30 horas', hours_en: '30 horas', link: 'certificates/Certificado-SQL.pdf' },
+                { name_pt: 'Métricas de Negócios Digitais', name_en: 'Digital Business Metrics', institution: 'PM3', hours_pt: '5 horas', hours_en: '5 hours', link: 'certificates/Certificado-Métricas-de-Negócio.pdf' },
+                { name_pt: 'Design Thinking', name_en: 'Design Thinking', institution: 'Inst. de Computação UFBA', hours_pt: '30 horas', hours_en: '30 horas', link: 'certificates/Certificado-Design-Thinking.pdf' },
+                { name_pt: 'Product Management', name_en: 'Product Management', institution: 'Cubos Academy', hours_pt: '50 horas', hours_en: '50 hours', link: '#' },
+                { name_pt: 'Figma', name_en: 'Figma', institution: 'Cubos Academy', hours_pt: '8 horas', hours_en: '8 horas', link: 'certificates/Certificado-Figma.pdf' },
+                { name_pt: 'HTML, CSS & JS', name_en: 'HTML, CSS & JS', institution: 'InfoJR UFBA', hours_pt: '44 horas', hours_en: '44 hours', link: 'certificates/Certificado-InfoJr.pdf' },
+                { name_pt: 'Typescript', name_en: 'Typescript', institution: 'Cubos Academy', institution_en: 'Cubos Academy', hours_pt: '22 horas', hours_en: '22 hours', link: 'certificates/Certificado-Typescript.pdf' },
+                { name_pt: 'React', name_en: 'React', institution: 'Cubos Academy', institution_en: 'Cubos Academy', hours_pt: '22 horas', hours_en: '22 hours', link: 'certificates/Certificado-React.pdf' },
+                { name_pt: 'Next.js', name_en: 'Next.js', institution: 'Cubos Academy', hours_pt: '15 horas', hours_en: '15 hours', link: 'certificates/Certificado-Next.pdf' },
+            ];
+
+            // --- Carousel Setup ---
+            const scroller = document.getElementById('carousel-scroller');
+            
+            const createCard = (cert) => {
+                return `
+                    <div class="flex-shrink-0 w-64 mx-4">
+                        <div class="card-bg p-6 rounded-lg flex flex-col items-center text-center h-full">
+                            <i class="fas fa-award text-5xl text-blue-400 mb-4"></i>
+                            <h4 class="text-lg font-bold text-primary mb-1" data-lang-pt="${cert.name_pt}" data-lang-en="${cert.name_en}">${cert.name_pt}</h4>
+                            <p class="text-sm italic text-secondary mb-2" data-lang-pt="${cert.institution}" data-lang-en="${cert.institution_en || cert.institution}">${cert.institution}</p>
+                            <p class="text-md text-secondary mb-5" data-lang-pt="${cert.hours_pt}" data-lang-en="${cert.hours_en}">${cert.hours_pt}</p>
+                            <a href="${cert.link}" download class="secondary-button text-xs font-medium py-2 px-4 rounded-md mt-auto" data-lang-pt="Download" data-lang-en="Download">Download</a>
+                        </div>
+                    </div>
+                `;
             }
-        });
+            
+            // Populate and duplicate cards for infinite scroll effect
+            const cardsHTML = certificates.map(createCard).join('');
+            scroller.innerHTML = cardsHTML + cardsHTML;
 
-        // Close mobile menu on link click
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuButton.querySelector('i').classList.remove('fa-times');
-                menuButton.querySelector('i').classList.add('fa-bars');
-            });
-        });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Calculate offset for fixed navbar
-                    const navbarHeight = document.getElementById('navbar').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+            // --- Theme Toggler ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const themeIcon = themeToggle.querySelector('i');
+
+            const applyTheme = (theme) => {
+                if (theme === 'light') {
+                    body.classList.add('light-theme');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    body.classList.remove('light-theme');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
                 }
+            };
+
+            themeToggle.addEventListener('click', () => {
+                const isLight = body.classList.toggle('light-theme');
+                const newTheme = isLight ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
             });
-        });
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+            // --- Language Toggler ---
+            const langToggle = document.getElementById('lang-toggle');
+            let currentLang = localStorage.getItem('lang') || 'pt';
 
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+            const switchLanguage = (lang) => {
+                document.querySelectorAll('[data-lang-pt]').forEach(el => {
+                    const text = el.getAttribute(`data-lang-${lang}`);
+                    if (text !== null) {
+                         el.innerText = text;
+                    }
+                });
+                langToggle.textContent = lang === 'pt' ? 'EN' : 'PT';
+                document.documentElement.lang = lang;
+                localStorage.setItem('lang', lang);
+                currentLang = lang;
+            };
 
-        // Intersection Observer for fade-in animations
-        const animatedElements = document.querySelectorAll('.fade-in-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = entry.target.style.animationDelay || '0s'; // Ensure delay is set
-                    entry.target.classList.add('visible'); 
-                }
+            langToggle.addEventListener('click', () => {
+                const newLang = currentLang === 'pt' ? 'en' : 'pt';
+                switchLanguage(newLang);
             });
-        }, { threshold: 0.1 }); 
 
-        animatedElements.forEach(el => {
-            observer.observe(el);
+            // --- Initial Load ---
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(savedTheme);
+            switchLanguage(currentLang);
+
+            // --- Mobile Menu ---
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = menuButton.querySelector('i');
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuIcon.classList.toggle('fa-bars');
+                mobileMenuIcon.classList.toggle('fa-times');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuIcon.classList.remove('fa-times');
+                    mobileMenuIcon.classList.add('fa-bars');
+                });
+            });
+
+            // --- Navbar Scroll Effect ---
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // --- Footer Year ---
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // --- Intersection Observer Animations ---
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = entry.target.style.animationDelay || '0s';
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
         });
-
     </script>
 </body>
 </html>
