@@ -1,656 +1,724 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pedro Teles - Análise de Negócios & Produto</title>
-<!-- Tailwind CSS -->
-        <script src="https://cdn.tailwindcss.com"></script>
-<!-- Font Awesome for Icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-              xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous"
-              referrerpolicy="no-referrer" />
-<!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- React Libraries -->
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Teles — Análise de Negócios & Gestão de Produto</title>
+    <meta name="description" content="Pedro Teles — estudante de Administração (UFBA), atuando com Análise de Negócios e Gestão de Produto. Portfólio, experiência e certificações.">
+    <meta property="og:title" content="Pedro Teles — Análise de Negócios & Gestão de Produto">
+    <meta property="og:description" content="Portfólio e currículo de Pedro Teles: análise de negócios, gestão de produto e desenvolvimento web.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eusouopeu.github.io">
+    <meta property="og:image" content="https://eusouopeu.github.io/images/profile-square.png">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B1220'/%3E%3Cpath d='M32 10 L50 32 L32 54 L14 32 Z' fill='none' stroke='%23C9A227' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='9' fill='%234C86BE'/%3E%3C/svg%3E">
 
-        <style>
-            :root {
-                /* Dark Theme (Default) */
-                --bg-primary-gradient: linear-gradient(135deg, #0D1117 0%, #1D132A 100%);
-                --bg-secondary-solid: rgba(22, 27, 34, 0.9);
-                --bg-card: #0D1117;
-                --text-primary: #C9D1D9;
-                --text-secondary: #8B949E;
-                --border-color: #30363D;
-                --accent-color: #58A6FF;
-                --accent-color-rose: #F472B6;
-                --accent-gradient-text: linear-gradient(to right, var(--accent-color), var(--accent-color-rose));
-                --overlay-color: rgba(13, 17, 23, 0.85);
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        :root {
+            /* Ink / Azulejo — dark (default) */
+            --bg: #0B1220;
+            --bg-alt: #0F1A2E;
+            --card: #121C31;
+            --card-hover: #16233C;
+            --border: #223049;
+            --ink: #ECEFF4;
+            --ink-dim: #92A0B8;
+            --azul: #5B93C4;
+            --azul-strong: #2F6690;
+            --gold: #D4AF37;
+            --gold-soft: rgba(212, 175, 55, 0.14);
+            --azul-soft: rgba(91, 147, 196, 0.14);
+            --overlay: rgba(11, 18, 32, 0.9);
+        }
+
+        .light-theme {
+            --bg: #F1F4F9;
+            --bg-alt: #FFFFFF;
+            --card: #FFFFFF;
+            --card-hover: #F7F9FC;
+            --border: #DAE2ED;
+            --ink: #121A2B;
+            --ink-dim: #55627A;
+            --azul: #245A85;
+            --azul-strong: #16436A;
+            --gold: #9C7A16;
+            --gold-soft: rgba(156, 122, 22, 0.10);
+            --azul-soft: rgba(36, 90, 133, 0.08);
+            --overlay: rgba(241, 244, 249, 0.92);
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { background: var(--bg); }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Fraunces', serif;
+        }
+
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+
+        ::selection { background: var(--gold-soft); color: var(--ink); }
+
+        a, button { -webkit-tap-highlight-color: transparent; }
+
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
             }
+        }
 
-            .light-theme {
-                /* Light Theme */
-                --bg-primary-gradient: linear-gradient(135deg, #FFFFFF 0%, #FCE7F3 100%);
-                --bg-secondary-solid: rgba(246, 248, 250, 0.9);
-                --bg-card: #FFFFFF;
-                --text-primary: #24292F;
-                --text-secondary: #57606A;
-                --border-color: #D0D7DE;
-                --accent-color: #0969DA;
-                --accent-color-rose: #DB2777;
-                --accent-gradient-text: linear-gradient(to right, var(--accent-color), var(--accent-color-rose));
-                --overlay-color: rgba(255, 255, 255, 0.85);
-            }
+        .text-dim { color: var(--ink-dim); }
 
-            body {
-                font-family: 'Inter', sans-serif;
-                background: var(--bg-primary-gradient);
-                color: var(--text-primary);
-                transition: background 0.3s ease, color 0.3s ease;
-            }
+        .gradient-text {
+            background: linear-gradient(100deg, var(--azul) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-            .gradient-text {
-                background: var(--accent-gradient-text);
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-            }
+        .section-alt { background-color: var(--bg-alt); }
 
-            .hero-bg {
-                background: transparent;
-            }
+        .card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+        }
 
-            .section-bg {
-                background-color: var(--bg-secondary-solid);
-            }
+        .card:hover {
+            border-color: var(--azul);
+            transform: translateY(-4px);
+            background-color: var(--card-hover);
+        }
 
-            .card-bg {
-                background-color: var(--bg-card);
-                border: 1px solid var(--border-color);
-                transition: all 0.3s ease;
-            }
+        .btn-primary {
+            background-color: var(--azul);
+            color: #F8FAFC;
+            border: 1px solid var(--azul);
+            transition: all 0.25s ease;
+        }
+        .btn-primary:hover { background-color: var(--azul-strong); border-color: var(--azul-strong); }
 
-            .card-bg:hover {
-                border-color: var(--accent-color);
-                transform: translateY(-5px);
-            }
+        .btn-ghost {
+            border: 1px solid var(--border);
+            color: var(--ink);
+            transition: all 0.25s ease;
+        }
+        .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-            .card-bg.product-card:hover {
-                border-color: var(--accent-color-rose);
-            }
+        .tag {
+            background-color: var(--azul-soft);
+            color: var(--azul);
+            border: 1px solid transparent;
+        }
+        .light-theme .tag { color: var(--azul-strong); }
 
-            .secondary-button {
-                border: 1px solid var(--border-color);
-                color: var(--accent-color);
-                transition: all 0.3s ease;
-            }
+        .tag-gold {
+            background-color: var(--gold-soft);
+            color: var(--gold);
+            border: 1px solid transparent;
+        }
+        .light-theme .tag-gold { color: #7A5F10; }
 
-            .secondary-button:hover {
-                background-color: var(--accent-color);
-                color: var(--bg-card);
-                border-color: var(--accent-color);
-            }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(18px);
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .secondary-button-rose {
-                border: 1px solid var(--border-color);
-                color: var(--accent-color-rose);
-                transition: all 0.3s ease;
-            }
+        nav.scrolled {
+            background-color: var(--overlay);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
 
-            .secondary-button-rose:hover {
-                background-color: var(--accent-color-rose);
-                color: var(--bg-card);
-                border-color: var(--accent-color-rose);
-            }
+        .ledger-item {
+            position: relative;
+            padding-left: 28px;
+            border-left: 1px solid var(--border);
+        }
+        .ledger-item:last-child { border-left: 1px solid transparent; }
+        .ledger-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            border-radius: 2px;
+            transform: rotate(45deg);
+            background-color: var(--gold);
+        }
 
-            .tag {
-                background-color: rgba(88, 166, 255, 0.1);
-                color: var(--accent-color);
-                border: 1px solid rgba(88, 166, 255, 0.3);
-            }
+        @keyframes scroll-x {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll { animation: scroll-x 32s linear infinite; }
+        .carousel-wrapper:hover .animate-scroll { animation-play-state: paused; }
 
-            .light-theme .tag {
-                background-color: rgba(9, 105, 218, 0.1);
-                border: 1px solid rgba(9, 105, 218, 0.2);
-            }
+        /* Signature element: azulejo tile motif, used once, in the hero */
+        .azulejo-field {
+            position: absolute;
+            inset: 0;
+            opacity: 0.16;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%235B93C4' stroke-width='1.2'%3E%3Ccircle cx='0' cy='0' r='70'/%3E%3Ccircle cx='200' cy='0' r='70'/%3E%3Ccircle cx='0' cy='200' r='70'/%3E%3Ccircle cx='200' cy='200' r='70'/%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 200px 200px;
+            mask-image: radial-gradient(ellipse 60% 50% at 50% 22%, black 0%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 22%, black 0%, transparent 75%);
+        }
+        .light-theme .azulejo-field { opacity: 0.09; }
 
-            .tag-rose {
-                background-color: rgba(244, 114, 182, 0.1);
-                color: var(--accent-color-rose);
-                border: 1px solid rgba(244, 114, 182, 0.3);
-            }
+        .hero-frame {
+            border: 1px solid var(--border);
+            box-shadow: 0 0 0 6px var(--azul-soft);
+        }
 
-            .light-theme .tag-rose {
-                background-color: rgba(219, 39, 119, 0.1);
-                border: 1px solid rgba(219, 39, 119, 0.2);
-            }
+        .eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.14em;
+            font-size: 0.72rem;
+        }
 
-            .fade-in-up {
-                opacity: 0;
-                transform: translateY(20px);
-                animation: fadeInUp 0.6s ease-out forwards;
-            }
+        .card-icon-tile {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--azul-soft), transparent 70%);
+            border-bottom: 1px solid var(--border);
+        }
+    </style>
+</head>
 
-            @keyframes fadeInUp {
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
+<body>
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme') || 'light';
+            if (saved === 'light') { document.body.className = 'light-theme'; }
+        })();
+    </script>
+    <div id="root"></div>
 
-            .fade-in-up.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
 
-            nav.scrolled {
-                background-color: rgba(13, 17, 23, 0.85);
-                backdrop-filter: blur(10px);
-                border-bottom: 1px solid var(--border-color);
-            }
+        // ---------------------------------------------------------------
+        // Data
+        // ---------------------------------------------------------------
+        const portfolioData = {
+            projects: [
+                {
+                    id: 1, icon: 'fa-utensils', lang: 'TypeScript',
+                    title_pt: "dumbfood", title_en: "dumbfood",
+                    description_pt: "PWA que importa receitas de sites brasileiros, reescala porções e gera uma lista de mercado unificada, somada e organizada por seção do mercado.",
+                    description_en: "A PWA that imports recipes from Brazilian recipe sites, rescales servings, and builds a unified, aisle-organized shopping list.",
+                    link: "https://github.com/eusouopeu/dumbfood"
+                },
+                {
+                    id: 2, icon: 'fa-stopwatch', lang: 'PWA',
+                    title_pt: "rotinas", title_en: "rotinas",
+                    description_pt: "Rotinas cronometradas e notas rápidas em markdown, com agendamento e estimativa de término.",
+                    description_en: "Timed routines and quick markdown notes, with scheduling and finish-time estimates.",
+                    link: "https://github.com/eusouopeu/rotinas"
+                },
+                {
+                    id: 3, icon: 'fa-terminal', lang: 'Python',
+                    title_pt: "textia", title_en: "textia",
+                    description_pt: "Assistente de IA global para macOS: intercepta comandos digitados em qualquer aplicativo via pynput e a API da Anthropic.",
+                    description_en: "A global AI assistant for macOS: intercepts typed commands in any app via pynput and the Anthropic API.",
+                    link: "https://github.com/eusouopeu/textia"
+                },
+                {
+                    id: 4, icon: 'fa-puzzle-piece', lang: 'TypeScript',
+                    title_pt: "brita-routines", title_en: "brita-routines",
+                    description_pt: "Plugin do Obsidian para rotinas com passos temporizados e execução guiada, no estilo do app Brita.",
+                    description_en: "An Obsidian plugin for timed, step-by-step guided routines, in the style of the Brita app.",
+                    link: "https://github.com/eusouopeu/brita-routines"
+                },
+                {
+                    id: 5, icon: 'fa-layer-group', lang: 'TypeScript',
+                    title_pt: "anki-cloze-raycast", title_en: "anki-cloze-raycast",
+                    description_pt: "Extensão Raycast para criar flashcards Cloze no Anki, ocultando automaticamente números, prazos e valores em textos jurídicos e técnicos.",
+                    description_en: "A Raycast extension for creating Anki Cloze flashcards, automatically hiding numbers, deadlines, and figures in legal and technical text.",
+                    link: "https://github.com/eusouopeu/anki-cloze-raycast"
+                },
+                {
+                    id: 6, icon: 'fa-language', lang: 'TypeScript',
+                    title_pt: "anki-lingo", title_en: "anki-lingo",
+                    description_pt: "Extensão Raycast: tradutor de mandarim e dicionário de nuances do português, com integração direta ao Anki.",
+                    description_en: "Raycast extension: Mandarin translator and Portuguese nuance dictionary, with direct Anki flashcard integration.",
+                    link: "https://github.com/eusouopeu/anki-lingo"
+                },
+            ],
+            certificates: [
+                { id: 1, name_pt: 'Product Management', name_en: 'Product Management', institution: 'Cubos Academy', hours_pt: '50 horas', hours_en: '50 hours', link: 'certificates/Certificado-Product-Management.pdf', category: 'product' },
+                { id: 2, name_pt: 'Desenvolvimento Web', name_en: 'Web Development', institution: 'InfoJr UFBA', hours_pt: '44 horas', hours_en: '44 hours', link: 'certificates/Certificado-InfoJr.pdf', category: 'business' },
+                { id: 3, name_pt: 'Design Thinking', name_en: 'Design Thinking', institution: 'Inst. de Computação UFBA', hours_pt: '30 horas', hours_en: '30 hours', link: 'certificates/Certificado-Design-Thinking.pdf', category: 'product' },
+                { id: 4, name_pt: 'SQL para Análise de Dados', name_en: 'SQL for Data Analysis', institution: 'Inst. de Computação UFBA', hours_pt: '30 horas', hours_en: '30 hours', link: 'certificates/Certificado-SQL.pdf', category: 'business' },
+                { id: 5, name_pt: 'TypeScript', name_en: 'TypeScript', institution: 'Cubos Academy', hours_pt: '22 horas', hours_en: '22 hours', link: 'certificates/Certificado-Typescript.pdf', category: 'business' },
+                { id: 6, name_pt: 'React', name_en: 'React', institution: 'Cubos Academy', hours_pt: '21 horas', hours_en: '21 hours', link: 'certificates/Certificado-React.pdf', category: 'business' },
+                { id: 7, name_pt: 'Next.js', name_en: 'Next.js', institution: 'Cubos Academy', hours_pt: '15 horas', hours_en: '15 hours', link: 'certificates/Certificado-Next.pdf', category: 'business' },
+                { id: 8, name_pt: 'Fundamentos para Análise de Dados', name_en: 'Data Analysis Fundamentals', institution: 'Microsoft', hours_pt: '10 horas', hours_en: '10 hours', link: 'certificates/Certificado-Dados.pdf', category: 'business' },
+                { id: 9, name_pt: 'Fundamentos de Análise de Negócios', name_en: 'Business Analysis Fundamentals', institution: 'Microsoft', hours_pt: '10 horas', hours_en: '10 hours', link: 'certificates/Certificado-Fundamentos-para-Analise-de-Negocios-por-Microsoft.pdf', category: 'business' },
+                { id: 10, name_pt: 'Figma', name_en: 'Figma', institution: 'Cubos Academy', hours_pt: '8 horas', hours_en: '8 hours', link: 'certificates/Certificado-Figma.pdf', category: 'product' },
+                { id: 11, name_pt: 'Métricas de Negócios Digitais', name_en: 'Digital Business Metrics', institution: 'Cubos Academy', hours_pt: '5 horas', hours_en: '5 hours', link: 'certificates/Certificado-Métricas-de-Negócio.pdf', category: 'business' },
+                { id: 12, name_pt: 'Excel', name_en: 'Excel', institution: 'LinkedIn Learning', hours_pt: '2,5 horas', hours_en: '2.5 hours', link: 'certificates/Certificado-Excel-Essential-Training.pdf', category: 'business' },
+                { id: 13, name_pt: 'Harrow House', name_en: 'Harrow House', institution: 'Harrow House', hours_pt: 'Curso de inglês', hours_en: 'English course', link: 'certificates/Certificado-Harrow-House.pdf', category: 'business' },
+            ]
+        };
 
-            .light-theme nav.scrolled {
-                background-color: rgba(255, 255, 255, 0.85);
-            }
-
-            .timeline-item {
-                position: relative;
-                padding-left: 30px;
-                border-left: 2px solid var(--border-color);
-            }
-
-            .timeline-item:last-child {
-                border-left: 2px solid transparent;
-            }
-
-            .timeline-item::before {
-                content: '';
-                position: absolute;
-                left: -9px;
-                top: 5px;
-                width: 16px;
-                height: 16px;
-                border-radius: 50%;
-                background-color: var(--accent-color);
-                border: 3px solid var(--bg-secondary-solid);
-            }
-
-            @keyframes scroll {
-                0% {
-                    transform: translateX(0);
-                }
-
-                100% {
-                    transform: translateX(-50%);
-                }
-            }
-
-            .animate-scroll {
-                animation: scroll 20s linear infinite;
-            }
-
-            .carousel-wrapper:hover .animate-scroll {
-                animation-play-state: paused;
-            }
-
-            /* Background Image Sections */
-            .section-with-bg {
-                position: relative;
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-            }
-
-            .section-with-bg::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: var(--overlay-color);
-                backdrop-filter: blur(4px);
-                z-index: 1;
-            }
-
-            .section-content-wrapper {
-                position: relative;
-                z-index: 2;
-            }
-
-            #about {
-                background-color: rgba(31, 24, 45, 0.85);
-                background-image: url('images/workstation-2.jpg');
-                background-blend-mode: multiply;
-            }
-
-            #projects {
-                background-image: url('https://placehold.co/1920x1080/1d132a/f472b6?text=Design+%26+C%C3%B3digo');
-            }
-
-            #skills {
-                background-image: url('https://placehold.co/1920x1080/0d1117/58a6ff?text=Dados+%26+Tecnologia');
-            }
-        </style>
-    </head>
-
-    <body>
-        <div id="root"></div>
-    
-        <script type="text/babel">
-            const { useState, useEffect, useRef } = React;
-
-            // Data for the components
-            const portfolioData = {
-                projects: [
-                    { id: 1, title_pt: "Lingoflix", title_en: "LingoFlix", description_pt: "Um projeto pessoal ou acadêmico onde você aplicou conceitos de análise de negócios ou produto.", description_en: "A personal or academic project where you applied business or product analysis concepts.", link: "#", imgSrc: "images/Avista.png", button_pt: "Ver projeto", button_en: "View project", link: "eusouopeu.github.io/lingoflix" },
-                    { id: 2, title_pt: "Quizareto", title_en: "Quizareto", description_pt: "Breve descrição do projeto, seu papel e as tecnologias ou metodologias chave utilizadas.", description_en: "Brief description of the project, your role, and the key technologies or methodologies used.", link: "#", imgSrc: "images/Quizareto.png", button_pt: "Ver projeto", button_en: "View project", link: "eusouopeu.github.io/Quizareto" },
-                    { id: 3, title_pt: "Hora H", title_en: "Hora H", description_pt: "Destaque um protótipo de alta fidelidade feito no Figma, os problemas que ele resolve e o processo de design.", description_en: "Highlight a high-fidelity prototype from Figma, the problems it solves, and the design process.", link: "#", imgSrc: "https://placehold.co/600x400/0D1117/FFFFFF?text=Prot%C3%B3tipo+2", button_pt: "Ver projeto", button_en: "View project" },
-                    { id: 4, title_pt: "Avista", title_en: "Avista", description_pt: "Um projeto pessoal ou acadêmico onde você aplicou conceitos de análise de negócios ou produto.", description_en: "A personal or academic project where you applied business or product analysis concepts.", link: "#", imgSrc: "images/Avista.png", button_pt: "Ver projeto", button_en: "View project", link: "eusouopeu.github.io/Avista" },
-                        { id: 5, title_pt: "Análise estatistica dos albuns indicados ao Grammy Latino", title_en: "Stat. Anal. of the albums nominated for the Latin Grammy", description_pt: "Um projeto pessoal ou acadêmico onde você aplicou conceitos de análise de negócios ou produto.", description_en: "A personal or academic project where you applied business or product analysis concepts.", link: "certificates/Analise-Estat-Grammy.pdf", imgSrc: "images/Avista.png", button_pt: "Ver Detalhes", button_en: "View Details", link: "certificates/Analise-Estat-Grammy.pdf" },
-                    { id: 6, title_pt: "Prototipo de app de alerta de desastres naturais", title_en: "Prototype of a natural disaster alert app", description_pt: "Um projeto pessoal ou acadêmico onde você aplicou conceitos de análise de negócios ou produto.", description_en: "A personal or academic project where you applied business or product analysis concepts.", link: "https://www.figma.com/proto/RR0BvgQXoDSZ0qHGaYaRaX/Gest%C3%A3o-de-Organiza%C3%A7%C3%B5es?node-id=2-925&starting-point-node-id=2%3A947&t=Tsuhvf02sK4iLP3e-1", imgSrc: "images/Avista.png", button_pt: "Ver Detalhes", button_en: "View Details", link: "https://www.figma.com/proto/RR0BvgQXoDSZ0qHGaYaRaX/Gest%C3%A3o-de-Organiza%C3%A7%C3%B5es?node-id=2-925&starting-point-node-id=2%3A947&t=Tsuhvf02sK4iLP3e-1" },
-                ],
-                certificates: [
-                    { id: 1, name_pt: 'Product Management', name_en: 'Product Management', institution: 'Cubos Academy', hours_pt: '50 horas', hours_en: '50 hours', link: 'certificates/Certificado-Product-Management.pdf', category: 'product' },
-                    { id: 2, name_pt: 'Product Management', name_en: 'Product Management', institution: 'Cubos Academy', hours_pt: '50 horas', hours_en: '50 hours', link: 'certificates/Certificado-Product-Management.pdf', category: 'product' },
-                    { id: 3, name_pt: 'Desenvolvimento  Web', name_en: 'Web Development', institution: 'InfoJr UFBA', hours_pt: '44 horas', hours_en: '44 hours', link: 'certificates/Certificado-InfoJr.pdf', category: 'business' },
-                    { id: 4, name_pt: 'Design Thinking', name_en: 'Design Thinking', institution: 'Inst. de Computação UFBA', hours_pt: '30 horas', hours_en: '30 hours', link: 'certificates/Certificado-Design-Thinking.pdf', category: 'product' },
-                    { id: 5, name_pt: 'SQL para Análise de Dados', name_en: 'SQL for Data Analysis', institution: 'Inst. de Computação UFBA', hours_pt: '30 horas', hours_en: '30 hours', link: 'certificates/Certificado-SQL.pdf', category: 'business' },
-                    { id: 6, name_pt: 'Typescript', name_en: 'Typescript', institution: 'Cubos Academy', hours_pt: '22 horas', hours_en: '22 hours', link: 'certificates/Certificado-Typescript.pdf', category: 'business' },
-                    { id: 7, name_pt: 'React', name_en: 'React', institution: 'Cubos Academy', hours_pt: '21 horas', hours_en: '21 hours', link: 'certificates/Certificado-React.pdf', category: 'business' },
-                    { id: 8, name_pt: 'Next.js', name_en: 'Next.js', institution: 'Cubos Academy', hours_pt: '15 horas', hours_en: '15 hours', link: 'certificates/Certificado-Next.pdf', category: 'business' },
-                    { id: 9, name_pt: 'Fundamentos para Análise de Dados', name_en: 'Data Analysis Fundamentals', institution: 'Microsoft', hours_pt: '10 horas', hours_en: '10 hours', link: 'certificates/Certificado-Dados.pdf', category: 'business' },
-                    { id: 10, name_pt: 'Figma', name_en: 'Figma', institution: 'Cubos Academy', hours_pt: '8 horas', hours_en: '8 hours', link: 'certificates/Certificado-Figma.pdf', category: 'product' },
-                    { id: 11, name_pt: 'Métricas de Negócios Digitais', name_en: 'Digital Business Metrics', institution: 'Cubos Academy', hours_pt: '5 horas', hours_en: '5 hours', link: 'certificates/Certificado-Métricas-de-Negócio.pdf', category: 'business' },
-                    { id: 12, name_pt: 'Excel', name_en: 'Excel', institution: 'LinkedIn Learning', hours_pt: '2.5 horas', hours_en: '2.5 hours', link: 'certificates/Certificado-Excel-Essential-Training.pdf', category: 'business' },
+        const langContent = {
+            nav: {
+                about: { pt: "Sobre", en: "About" },
+                experience: { pt: "Experiência", en: "Experience" },
+                projects: { pt: "Projetos", en: "Projects" },
+                certificates: { pt: "Certificados", en: "Certificates" },
+                skills: { pt: "Habilidades", en: "Skills" },
+            },
+            hero: {
+                eyebrow: { pt: "PORTFÓLIO / CURRÍCULO", en: "PORTFOLIO / RÉSUMÉ" },
+                greeting: { pt: "Olá, sou", en: "Hi, I'm" },
+                title: { pt: "Análise de Negócios · Gestão de Produto", en: "Business Analysis · Product Management" },
+                facts: { pt: "Salvador, BA — Brasil  ·  Administração, UFBA  ·  PT · EN · IT · 中文", en: "Salvador, Bahia — Brazil  ·  Administration, UFBA  ·  PT · EN · IT · 中文" },
+                cvButton: { pt: "Baixar currículo", en: "Download résumé" },
+                scrollHint: { pt: "Sobre mim", en: "About me" }
+            },
+            about: {
+                eyebrow: { pt: "FICHA", en: "PROFILE" },
+                title: { pt: "Sobre Mim", en: "About Me" },
+                p1: { pt: "Estudante de Administração da UFBA apaixonado por transformar dados em estratégias de produto.", en: "Administration student at the Federal University of Bahia (UFBA), passionate about turning data into product strategy." },
+                p2: { pt: "Tenho a convicção de que as melhores soluções surgem da escuta ativa dos clientes e usuários e da análise dos dados que eles fornecem. Por esse motivo, venho construindo um repertório técnico que conecta técnicas qualitativas de descoberta de produto (como condução de entrevistas e grupos focais, prototipagem e testes A/B) a habilidades de análise quantitativa (estatística descritiva e inferencial, Excel, SQL, etc.).", en: "I'm convinced the best solutions come from actively listening to customers and users, and from analyzing the data they provide. That's why I've been building a technical toolkit that connects qualitative product-discovery techniques (interviews, focus groups, prototyping, A/B testing) with quantitative analysis skills (descriptive and inferential statistics, Excel, SQL, and more)." },
+                p3: { pt: "Possuo experiência prática em análise de requisitos, gestão ágil (Scrum) e desenvolvimento web (React e Next.js) em projetos da empresa júnior de computação da UFBA (InfoJr). Também aprendi, durante a minha experiência na InfoJr, a dialogar com profissionais da área de tecnologia (designers e desenvolvedores) e a traduzir insights de negócio para eles de forma clara e acionável.", en: "I have hands-on experience in requirements analysis, agile management (Scrum), and web development (React and Next.js) through projects at UFBA's computing junior enterprise (InfoJr). That experience also taught me how to work closely with tech professionals (designers and developers) and translate business insights for them clearly and actionably." },
+                p4: { pt: "Atualmente estou em busca de oportunidades de estágio nas áreas de análise de negócios ou de gestão de produto para aplicar e expandir minhas habilidades nessas áreas.", en: "I'm currently looking for internship opportunities in Business Analysis or Product Management to apply and expand my skills in design thinking, data analysis, requirements gathering, and product development." }
+            },
+            experience: {
+                title: { pt: "Experiência", en: "Experience" },
+                jobs: [
+                    { id: 1, date_pt: "Ago 2024 — Jan 2025", date_en: "Aug 2024 — Jan 2025", title_pt: "Gerente de Exomarketing", title_en: "Exomarketing Manager", company: "Empresa Júnior de Informática da UFBA (InfoJr)" },
+                    { id: 2, date_pt: "Abr 2024 — Jul 2024", date_en: "Apr 2024 — Jul 2024", title_pt: "Desenvolvedor Web (Trainee)", title_en: "Web Developer (Trainee)", company: "Empresa Júnior de Informática da UFBA (InfoJr)" },
+                    { id: 3, date_pt: "Set 2023 — Jun 2024", date_en: "Sep 2023 — Jun 2024", title_pt: "Presidente e Co-fundador", title_en: "President & Co-founder", company: "Liga Acadêmica Transdisciplinar de Tecnologia e Inovação (LATTI), UFBA" }
                 ]
-            };
+            },
+            portfolio: {
+                eyebrow: { pt: "TRABALHO", en: "WORK" },
+                title: { pt: "Projetos Recentes", en: "Recent Projects" },
+                subtitle: { pt: "Direto do GitHub — atualizado automaticamente conforme novos repositórios.", en: "Straight from GitHub — refreshed as new repos come out." },
+                view: { pt: "Ver no GitHub", en: "View on GitHub" }
+            },
+            certificates: {
+                eyebrow: { pt: "REGISTRO", en: "RECORD" },
+                title: { pt: "Certificados & Cursos", en: "Certificates & Courses" },
+                download: { pt: "Ver PDF", en: "View PDF" }
+            },
+            skills: {
+                eyebrow: { pt: "COMPETÊNCIAS", en: "COMPETENCIES" },
+                title: { pt: "Habilidades & Competências", en: "Skills & Competencies" },
+                businessAnalysisTitle: { pt: "Análise de Negócios", en: "Business Analysis" },
+                productManagementTitle: { pt: "Gestão de Produto", en: "Product Management" },
+                langTitle: { pt: "Idiomas", en: "Languages" },
+                businessAnalysis: [
+                    { id: 1, title_pt: "Metodologias de Análise", title_en: "Analysis Methodologies", tags: ["Design Thinking", "Double Diamond", "Benchmarking", "Análise Competitiva", "Análise de Lacunas", "Análise de Causa Raiz", "Jobs-to-be-Done"] },
+                    { id: 2, title_pt: "Levantamento de Requisitos", title_en: "Requirements Gathering", tags: ["Entrevistas", "Workshops", "Brainstorming", "Grupos Focais", "Questionários", "Prototipagem", "Storyboarding"] },
+                    { id: 3, title_pt: "Modelagem de Processos", title_en: "Process Modeling", tags: ["UML", "Diagramas de Raias", "Fluxogramas", "User Story Mapping", "Feature Decomposition"] },
+                    { id: 4, title_pt: "Análise de Dados e Métricas", title_en: "Data Analysis & Metrics", tags: ["SQL Avançado", "Python para Análise", "Design de KPIs", "Balanced Scorecard (BSC)", "Análise Estatística", "Testes A/B"] }
+                ],
+                productManagement: [
+                    { id: 1, title_pt: "Gerais", title_en: "General", tags: ["Plano de Marketing", "Lançamento de Produtos", "Jobs-to-be-Done", "Ciclo de Vida de Produtos", "Análise de Mercado", "Segmentação de Mercado", "Análise de Dados", "Acompanhamento de KPIs"] },
+                    { id: 2, title_pt: "Metodologias de Desenvolvimento", title_en: "Development Methodologies", tags: ["Double Diamond", "Design Thinking", "Lean Startup", "Construir-Medir-Aprender"] },
+                    { id: 3, title_pt: "Descoberta e Pesquisa", title_en: "Discovery & Research", tags: ["Pesquisa de Usuário", "Entrevistas com Clientes", "Criação de Personas", "Jornada do Cliente", "Análise Competitiva"] },
+                    { id: 4, title_pt: "Definição e Planejamento", title_en: "Definition & Planning", tags: ["User Stories", "Roadmap de Produto", "Método MoSCoW", "Framework RICE"] },
+                    { id: 5, title_pt: "Testes e Validação", title_en: "Testing & Validation", tags: ["MVP", "Prototipagem", "Teste A/B", "Teste de Usabilidade", "Agile/Scrum", "Planejamento de Sprint"] }
+                ],
+                languages: [
+                    { id: 1, name_pt: "Português", name_en: "Portuguese", level_pt: "Nativo", level_en: "Native" },
+                    { id: 2, name_pt: "Inglês", name_en: "English", level_pt: "Fluente", level_en: "Fluent" },
+                    { id: 3, name_pt: "Italiano", name_en: "Italian", level_pt: "Fluente", level_en: "Fluent" },
+                    { id: 4, name_pt: "Mandarim", name_en: "Mandarin", level_pt: "Intermediário (HSK 3)", level_en: "Intermediate (HSK 3)" }
+                ]
+            },
+            footer: {
+                cta: { pt: "Vamos conversar", en: "Let's talk" },
+                ctaText: { pt: "Aberto a oportunidades de estágio em Análise de Negócios e Gestão de Produto.", en: "Open to internship opportunities in Business Analysis and Product Management." },
+                linkedinButton: { pt: "Falar no LinkedIn", en: "Message on LinkedIn" }
+            }
+        };
 
-            // Language content
-            const langContent = {
-                nav: {
-                    about: { pt: "Sobre", en: "About" },
-                    projects: { pt: "Projetos", en: "Projects" },
-                    certificates: { pt: "Certificados", en: "Certificates" },
-                    skills: { pt: "Habilidades", en: "Skills" },
-                },
-                hero: {
-                    greeting: { pt: "Olá, sou", en: "Hi, I'm" },
-                    title: { pt: "Análise de Negócios | Gestão de Produto", en: "Business Analysis | Product Management" },
-                    cvButton: { pt: "Baixar CV", en: "Download CV" }
-                },
-                about: {
-                    title: { pt: "Sobre Mim", en: "About Me" },
-                    p1: { pt: "Estudante de Administração da UFBA apaixonado por transformar dados em estratégias de produto.", en: "Administration student at the Federal University of Bahia (UFBA), with an analytical, multidisciplinary, and results-oriented profile." },
-                    p2: { pt: "Tenho a convicção de que as melhores soluções surgem da escuta ativa dos clientes e usuários e da análise dos dados que eles fornecem. Por esse motivo, venho construindo um repertório técnico que conecta técnicas qualitativas de descoberta de produto (como condução de entrevistas e grupos focais, prototipagem e testes A/B) a habilidades de análise quantitativa (estatística descritiva e inferencial, Excel, SQL, etc.). ", en: "." },
-                    p3: { pt: "Possuo experiência prática em análise de requisitos, gestão ágil (Scrum) e desenvolvimento web (React e Next.js) em projetos da empresa júnior de computação da UFBA (InfoJr). Também aprendi, durante a minha experiência na InfoJr, a dialogar com profissionais da área de tecnologia (designers e desenvolvedores) e a traduzir insights de negócio para eles de forma clara e acionável. ", en: "." },
-                    p4: { pt: "Atualmente estou em busca de oportunidades de estágio nas áreas de análise de negócios ou de gestão de produto para aplicar e expandir minhas habilidades nessas áreas.", en: "Looking for internship opportunities in Business Analysis or Product Management to apply and expand my skills in design thinking, data analysis, requirements gathering, and product development." }
-                },
-                experience: {
-                    title: { pt: "Experiência", en: "Experience" },
-                    jobs: [
-                        { id: 1, date_pt: "Agosto 2024 - Janeiro 2025", date_en: "August 2024 - January 2025", title_pt: "Gerente de Exomarketing", title_en: "Exomarketing Manager", company: "Empresa Junior de Informatica da UFBA" },
-                        { id: 2, date_pt: "Abril 2024 - Julho 2024", date_en: "April 2024 - July 2024", title_pt: "Desenvolvedor Web (Trainee)", title_en: "Web Developer (Trainee)", company: "Empresa Junior de Informatica da UFBA" },
-                        { id: 3, date_pt: "Setembro 2023 - Junho 2024", date_en: "September 2023 - June 2024", title_pt: "Presidente e Co-fundador", title_en: "President & Co-founder", company: "Liga Acadêmica Transdisciplinar de Tecnologia e Inovação (LATTI) da UFBA" }
-                    ]
-                },
-                portfolio: {
-                    title: { pt: "Projetos & Protótipos", en: "Projects & Prototypes" }
-                },
-                certificates: {
-                    title: { pt: "Certificados & Cursos", en: "Certificates & Courses" },
-                    download: { pt: "Download", en: "Download" }
-                },
-                skills: {
-                    title: { pt: "Habilidades & Competências", en: "Skills & Competencies" },
-                    businessAnalysisTitle: { pt: "Análise de Negócios", en: "Business Analysis" },
-                    productManagementTitle: { pt: "Gestão de Produto", en: "Product Management" },
-                    langTitle: { pt: "Idiomas", en: "Languages" },
-                    businessAnalysis: [
-                        { id: 1, title_pt: "Metodologias de Análise", title_en: "Analysis Methodologies", tags: ["Design Thinking", "Double Diamond", "Benchmarking", "Análise Competitiva", "Análise de Lacunas", "Análise de Causa Raiz", "Jobs-to-be-Done"] },
-                        { id: 2, title_pt: "Levantamento de Requisitos", title_en: "Requirements Gathering", tags: ["Entrevistas", "Workshops", "Brainstorming", "Grupos Focais", "Questionários", "Prototipagem", "Storyboarding"] },
-                        { id: 3, title_pt: "Modelagem de Processos", title_en: "Process Modeling", tags: ["UML", "Diagramas de Raias", "Fluxogramas", "User Story Mapping", "Feature Decomposition"] },
-                        { id: 4, title_pt: "Análise de Dados e Métricas", title_en: "Data Analysis & Metrics", tags: ["SQL Avançado", "Python para Análise", "Design de KPIs", "Balanced Scorecard (BSC)", "Análise Estatística", "Testes A/B"] }
-                    ],
-                    productManagement: [
-                        { id: 1, title_pt: "Gerais", title_en: "General", tags: ["Plano de Marketing", "Lançamento de Produtos", "Jobs-to-be-Done", "Ciclo de Vida de Produtos", "Análise de Mercado", "Segmentação de Mercado", "Análise de Dados", "Acompanhamento de KPIs"] },
-                        { id: 2, title_pt: "Metodologias de Desenvolvimento", title_en: "Development Methodologies", tags: ["Double Diamond", "Design Thinking", "Lean Startup", "Construir-Medir-Aprender"] },
-                        { id: 3, title_pt: "Descoberta e Pesquisa", title_en: "Discovery & Research", tags: ["Pesquisa de Usuário", "Entrevistas com Clientes", "Criação de Personas", "Jornada do Cliente", "Análise Competitiva"] },
-                        { id: 4, title_pt: "Definição e Planejamento", title_en: "Definition & Planning", tags: ["User Stories", "Roadmap de Produto", "Método MoSCoW", "Framework RICE"] },
-                        { id: 5, title_pt: "Testes e Validação", title_en: "Testing & Validation", tags: ["MVP", "Prototipagem", "Teste A/B", "Teste de Usabilidade", "Agile/Scrum", "Planejamento de Sprint"] }
-                    ],
-                    languages: [
-                        { id: 1, name_pt: "Português", name_en: "Portuguese", level_pt: "Nativo", level_en: "Native" },
-                        { id: 2, name_pt: "Inglês", name_en: "English", level_pt: "Fluente", level_en: "Fluent" },
-                        { id: 3, name_pt: "Italiano", name_en: "Italian", level_pt: "Fluente", level_en: "Fluent" },
-                        { id: 4, name_pt: "Mandarim", name_en: "Mandarin", level_pt: "Principiante (HSK-2)", level_en: "Beginner (HSK-2)" }
-                    ]
-                },
-                footer: {
-                }
-            };
+        // ---------------------------------------------------------------
+        // Hooks & helpers
+        // ---------------------------------------------------------------
+        const useFadeInUp = (ref) => {
+            useEffect(() => {
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.12 }
+                );
+                const currentRef = ref.current;
+                if (currentRef) observer.observe(currentRef);
+                return () => { if (currentRef) observer.unobserve(currentRef); };
+            }, [ref]);
+        };
 
-            // Custom Hook for animations
-            const useFadeInUp = (ref) => {
-                useEffect(() => {
-                    const observer = new IntersectionObserver(
-                        (entries) => {
-                            entries.forEach((entry) => {
-                                if (entry.isIntersecting) {
-                                    entry.target.classList.add('visible');
-                                    observer.unobserve(entry.target);
-                                }
-                            });
-                        },
-                        { threshold: 0.1 }
-                    );
+        // ---------------------------------------------------------------
+        // Components
+        // ---------------------------------------------------------------
+        const Navbar = ({ lang, setLang, theme, setTheme }) => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [isScrolled, setIsScrolled] = useState(false);
 
-                    const currentRef = ref.current;
-                    if (currentRef) {
-                        observer.observe(currentRef);
-                    }
+            useEffect(() => {
+                const handleScroll = () => setIsScrolled(window.scrollY > 40);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
 
-                    return () => {
-                        if (currentRef) {
-                            observer.unobserve(currentRef);
-                        }
-                    };
-                }, [ref]);
-                        };
+            const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+            const toggleLang = () => setLang(lang === 'pt' ? 'en' : 'pt');
 
-                        // Components
-                        const Navbar = ({ lang, setLang, theme, setTheme }) => {
-                            const [isMenuOpen, setIsMenuOpen] = useState(false);
-                            const [isScrolled, setIsScrolled] = useState(false);
+            return (
+                <nav className={`fixed w-full z-50 top-0 py-3 md:py-4 transition-all duration-300 ${isScrolled ? 'scrolled' : ''}`}>
+                    <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
+                        <a href="#home" className="text-xl md:text-2xl font-display font-semibold gradient-text">Pedro Teles</a>
+                        <div className="hidden md:flex items-center space-x-7 text-sm font-medium tracking-wide">
+                            {Object.entries(langContent.nav).map(([key, value]) => (
+                                <a key={key} href={`#${key}`} className="text-dim hover:text-current transition-colors duration-300">{value[lang]}</a>
+                            ))}
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <button onClick={toggleTheme} aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'} className="text-lg text-dim hover:text-current transition-colors duration-300">
+                                <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
+                            </button>
+                            <button onClick={toggleLang} aria-label="Alternar idioma" className="font-mono text-xs font-semibold text-dim hover:text-current transition-colors duration-300 border border-current rounded px-2 py-1" style={{ borderColor: 'var(--border)' }}>{lang === 'pt' ? 'EN' : 'PT'}</button>
+                            <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Abrir menu" className="md:hidden text-xl">
+                                <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
+                            </button>
+                        </div>
+                    </div>
+                    {isMenuOpen && (
+                        <div className="md:hidden mt-3" style={{ backgroundColor: 'var(--card)', borderTop: '1px solid var(--border)' }}>
+                            {Object.entries(langContent.nav).map(([key, value]) => (
+                                <a key={key} href={`#${key}`} className="block py-3 px-6 text-sm text-dim" onClick={() => setIsMenuOpen(false)}>{value[lang]}</a>
+                            ))}
+                        </div>
+                    )}
+                </nav>
+            );
+        };
 
-                            const handleScroll = () => {
-                                setIsScrolled(window.scrollY > 50);
-                            };
+        const Hero = ({ lang }) => {
+            const ref = useRef();
+            useFadeInUp(ref);
 
-                            useEffect(() => {
-                                window.addEventListener('scroll', handleScroll);
-                                return () => window.removeEventListener('scroll', handleScroll);
-                            }, []);
+            return (
+                <header id="home" className="relative min-h-screen flex items-center justify-center text-center px-4 pt-24 md:pt-20 overflow-hidden">
+                    <div className="azulejo-field" aria-hidden="true"></div>
+                    <div ref={ref} className="relative max-w-3xl mx-auto fade-in-up">
+                        <p className="eyebrow text-dim mb-6">{langContent.hero.eyebrow[lang]}</p>
+                        <img src="images/profile-square.png" alt="Retrato de Pedro Teles" className="hero-frame w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto mb-7 object-cover" />
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold mb-4 leading-tight">
+                            {langContent.hero.greeting[lang]} <span className="gradient-text">Pedro Teles</span>
+                        </h1>
+                        <p className="text-lg md:text-xl mb-6 text-dim">{langContent.hero.title[lang]}</p>
+                        <p className="font-mono text-xs md:text-sm text-dim mb-10 tracking-wide">{langContent.hero.facts[lang]}</p>
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <a href="certificates/Curr%C3%ADculo%20Vitae.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary font-semibold py-3 px-8 rounded-lg text-base w-full sm:w-auto">{langContent.hero.cvButton[lang]}</a>
+                            <div className="flex justify-center space-x-6 text-2xl">
+                                <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-dim hover:text-current transition-colors duration-300"><i className="fab fa-linkedin"></i></a>
+                                <a href="https://github.com/eusouopeu" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-dim hover:text-current transition-colors duration-300"><i className="fab fa-github"></i></a>
+                                <a href="https://www.instagram.com/eusouopeu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-dim hover:text-current transition-colors duration-300"><i className="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#about" aria-label={langContent.hero.scrollHint[lang]} className="absolute bottom-8 text-dim text-xl animate-bounce hidden sm:block">
+                        <i className="fas fa-chevron-down"></i>
+                    </a>
+                </header>
+            );
+        };
 
-                            const toggleTheme = () => {
-                                const newTheme = theme === 'dark' ? 'light' : 'dark';
-                                setTheme(newTheme);
-                            };
+        const AboutAndExperience = ({ lang }) => {
+            const aboutRef = useRef();
+            const expRef = useRef();
+            useFadeInUp(aboutRef);
+            useFadeInUp(expRef);
 
-                            const toggleLang = () => {
-                                const newLang = lang === 'pt' ? 'en' : 'pt';
-                                setLang(newLang);
-                            };
-
-                            return (
-                                <nav className={`fixed w-full z-50 top-0 py-3 md:py-4 transition-all duration-300 ${isScrolled ? 'scrolled' : ''}`}>
-                                    <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-                                        <a href="#home" className="text-2xl md:text-3xl font-bold gradient-text">Pedro Teles</a>
-                                        <div className="hidden md:flex items-center space-x-6 text-base">
-                                            {Object.entries(langContent.nav).map(([key, value]) => <a key={key} href={`#${key}`} className="hover:opacity-80 transition-opacity duration-300">{value[lang]}</a>)}
-                                        </div>
-                                        <div className="flex items-center gap-4">
-                                            <button onClick={toggleTheme} className="text-xl hover:opacity-80 transition-opacity duration-300">
-                                                <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
-                                            </button>
-                                            <button onClick={toggleLang} className="text-sm font-semibold hover:opacity-80 transition-opacity duration-300">{lang === 'pt' ? 'EN' : 'PT'}</button>
-                                            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden focus:outline-none text-2xl"><i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i></button>
-                                        </div>
-                                    </div>
-                                    {isMenuOpen && (
-                                        <div className="md:hidden bg-gray-800 bg-opacity-95">
-                                            {Object.entries(langContent.nav).map(([key, value]) => <a key={key} href={`#${key}`} className="block py-3 px-4 text-sm hover:bg-blue-600" onClick={() => setIsMenuOpen(false)}>{value[lang]}</a>)}
-                                        </div>
-                                    )}
-                                </nav>
-                            );
-                        };
-
-                                                        const Hero = ({ lang }) => {
-                                                            const ref = useRef();
-                                                            useFadeInUp(ref);
-
-                                                            return (
-                                                                <header id="home" ref={ref} className="hero-bg min-h-screen flex items-center justify-center text-center px-4 pt-20 md:pt-0 fade-in-up">
-                                                                    <div className="max-w-4xl mx-auto">
-                                                                        <img src="https://placehold.co/150x150/0D1117/FFFFFF?text=PT" alt="Pedro Teles" className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4" style={{ borderColor: 'var(--border-color)' }} />
-                                                                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
-                                                                            {langContent.hero.greeting[lang]} <span className="gradient-text">Pedro Teles</span>.
-                                                                        </h1>
-                                                                        <p className="text-xl md:text-2xl mb-8 text-secondary">{langContent.hero.title[lang]}</p>
-                                                                        <div className="flex justify-center items-center gap-6">
-                                                                            <div className="flex justify-center space-x-6 text-3xl">
-                                                                                <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-300" title="LinkedIn" style={{ color: 'var(--accent-color)' }}><i className="fab fa-linkedin"></i></a>
-                                                                                <a href="https://github.com/eusouopeu" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-300" title="GitHub" style={{ color: 'var(--accent-color)' }}><i className="fab fa-github"></i></a>
-                                                                                <a href="https://www.instagram.com/eusouopeu/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-300" title="Instagram" style={{ color: 'var(--accent-color)' }}><i className="fab fa-instagram"></i></a>
-                                                                            </div>
-                                                                        <a href="certificates/Currículo Vitae.pdf" target="_blank" _blank className="secondary-button font-semibold py-3 px-8 rounded-lg text-lg">{langContent.hero.cvButton[lang]}</a>
-                                                                    </div>
-                                                                </div>
-                    </header>
-                                                                                                        );
-                                                                                                    };
-
-                                                                                                    const AboutAndExperience = ({ lang }) => {
-                                                                                                        const aboutRef = useRef();
-                                                                                                        const expRef = useRef();
-                                                                                                        useFadeInUp(aboutRef);
-                                                                                                        useFadeInUp(expRef);
-
-                                                                                                return (
-                                                                                                    <section id="about" className="py-16 md:py-24 section-bg">
-                                                                                                        <div className="container mx-auto px-4 md:px-8">
-                                                                                                            <div className="grid md:grid-cols-5 gap-16 items-start">
-                                                                                                                <div ref={aboutRef} className="md:col-span-2 fade-in-up">
-                                                                                                                    <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text">{langContent.about.title[lang]}</h2>
-                                                                                                                    <div className="space-y-4 text-lg text-primary">
-                                                                                                                        <p>{langContent.about.p1[lang]}</p>
-                                                                                                                        <p>{langContent.about.p2[lang]}</p>
-                                                                                                                        <p>{langContent.about.p3[lang]}</p>
-                                                                                                                    </div>
-                                                                                                        </div>
-                                                                                                        <div ref={expRef} id="experience" className="md:col-span-3 fade-in-up" style={{ animationDelay: '0.2s' }}>
-                                                                                                            <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text">{langContent.experience.title[lang]}</h2>
-                                                                                                            <div className="space-y-10">
-                                                                                                                {langContent.experience.jobs.map(job => (
-                                                                                                                    <div key={job.id} className="timeline-item">
-                                                                                                                        <p className="text-sm text-secondary mb-1">{job[`date_${lang}`]}</p>
-                                                                                                                        <h3 className="text-xl font-semibold" style={{ color: 'var(--accent-color)' }}>{job[`title_${lang}`]}</h3>
-                                                                                                                        <p className="text-md text-secondary mb-3">{job.company}</p>
-                                                                                                                    </div>
-                                                                                                        ))}
-                                    </div>
-                                                                                                        </div>
-                                    </div>
-                                                                                                </div>
-                                    </section>
-                                                                                                );
-                                                                                            };
-
-                                                        const Portfolio = ({ lang }) => {
-                                                            const ref = useRef();
-                                                            useFadeInUp(ref);
-                                                            return (
-                                                                <section id="projects" className="py-16 md:py-24 section-with-bg">
-                                                                    <div className="section-content-wrapper">
-                                                                        <div className="container mx-auto px-4 md:px-8">
-                                                                            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in-up">{langContent.portfolio.title[lang]}</h2>
-                                                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                                                                {portfolioData.projects.map((project, index) => (
-                                                                                    <div key={project.id} className="card-bg rounded-lg overflow-hidden fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
-                                                                                        <img src={project.imgSrc} alt={project[`title_${lang}`]} className="w-full h-48 object-cover" />
-                                                                                        <div className="p-6">
-                                                                                            <h3 className="text-xl font-semibold mb-2">{project[`title_${lang}`]}</h3>
-                                                                                            <p className="text-sm text-secondary mb-4">{project[`description_${lang}`]}</p>
-                                                                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="secondary-button text-sm font-medium py-2 px-4 rounded-md inline-block">{project[`button_${lang}`]}</a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                            ))}
+            return (
+                <section id="about" className="py-16 md:py-24 section-alt" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+                    <div className="container mx-auto px-4 md:px-8">
+                        <div className="grid md:grid-cols-5 gap-16 items-start">
+                            <div ref={aboutRef} className="md:col-span-2 fade-in-up">
+                                <p className="eyebrow text-dim mb-3">{langContent.about.eyebrow[lang]}</p>
+                                <h2 className="text-3xl md:text-4xl font-display font-semibold mb-8">{langContent.about.title[lang]}</h2>
+                                <div className="space-y-4 text-base md:text-lg leading-relaxed">
+                                    <p>{langContent.about.p1[lang]}</p>
+                                    <p className="text-dim">{langContent.about.p2[lang]}</p>
+                                    <p className="text-dim">{langContent.about.p3[lang]}</p>
+                                    <p className="pt-2 border-t" style={{ borderColor: 'var(--border)' }}>{langContent.about.p4[lang]}</p>
                                 </div>
-                                </div>
-                                </div>
-                                </section>
-                                                        );
-                                                    };
-
-                                                        const Certificates = ({ lang }) => {
-                                                            const ref = useRef();
-                                                            useFadeInUp(ref);
-                                                            const duplicatedCerts = [...portfolioData.certificates, ...portfolioData.certificates];
-
-                                                        return (
-                                                            <section id="certificates" ref={ref} className="py-16 md:py-24 section-bg">
-                                                                <div className="container mx-auto px-4 md:px-8">
-                                                                    <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in-up">{langContent.certificates.title[lang]}</h2>
-                                                                    <div className="carousel-wrapper w-full overflow-hidden relative fade-in-up" style={{ animationDelay: '0.2s' }}>
-                                                                        <div className="flex animate-scroll">
-                                                                            {duplicatedCerts.map((cert, index) => {
-                                                                                const isProduct = cert.category === 'product';
-                                                                                const buttonClass = isProduct ? 'secondary-button-rose' : 'secondary-button';
-                                                                                const cardClass = isProduct ? 'card-bg product-card' : 'card-bg';
-
-                                                                                return (
-                                                                                    <div key={index} className="flex-shrink-0 w-64 mx-4">
-                                                                                        <div className={`${cardClass} p-6 rounded-lg flex flex-col items-center text-center h-full`}>
-                                                                                            <i className="fas fa-award text-5xl mb-4" style={{ color: isProduct ? 'var(--accent-color-rose)' : 'var(--accent-color)' }}></i>
-                                                                                            <h4 className="text-lg font-bold mb-1">{cert[`name_${lang}`]}</h4>
-                                                                                            <p className="text-sm italic text-secondary mb-2">{cert.institution}</p>
-                                                                                            <p className="text-md text-secondary mb-5">{cert[`hours_${lang}`]}</p>
-                                                                                            <a href={cert.link} target="_blank" className={`${buttonClass} text-xs font-medium py-2 px-4 rounded-md mt-auto`}>{langContent.certificates.download[lang]}</a>
-                                                                                        </div>
-                                                                                </div>
-                                                                            );
-                                                                        })}
-                                    </div>
-                                                                </div>
+                            </div>
+                            <div ref={expRef} id="experience" className="md:col-span-3 fade-in-up" style={{ animationDelay: '0.1s' }}>
+                                <h2 className="text-3xl md:text-4xl font-display font-semibold mb-8">{langContent.experience.title[lang]}</h2>
+                                <div className="space-y-10">
+                                    {langContent.experience.jobs.map(job => (
+                                        <div key={job.id} className="ledger-item">
+                                            <p className="font-mono text-xs text-dim mb-1 tracking-wide">{job[`date_${lang}`]}</p>
+                                            <h3 className="text-xl font-semibold" style={{ color: 'var(--azul)' }}>{job[`title_${lang}`]}</h3>
+                                            <p className="text-base text-dim">{job.company}</p>
                                         </div>
-                                                                                                                                                        </section>
-                                                                                                                                                    );
-                                                                                                                                                };
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-                                                                                                                                                const Skills = ({ lang }) => {
-                                                                                                                                                    const baRef = useRef();
-                                                                                                                                                    const pmRef = useRef();
-                                                                                                                                                    const langRef = useRef();
-                                                                                                                                                    useFadeInUp(baRef);
-                                                                                                                                                    useFadeInUp(pmRef);
-                                                                                                                                                    useFadeInUp(langRef);
+        const ProjectCard = ({ project, lang, index }) => {
+            return (
+                <a href={project.link} target="_blank" rel="noopener noreferrer"
+                   className="card rounded-lg overflow-hidden fade-in-up flex flex-col cursor-pointer no-underline"
+                   style={{ color: 'var(--ink)', animationDelay: `${index * 0.08}s` }}>
+                    <div className="card-icon-tile">
+                        <i className={`fas ${project.icon} text-4xl`} style={{ color: 'var(--azul)' }}></i>
+                    </div>
+                    <div className="p-6 flex flex-col flex-1">
+                        <span className="self-start tag text-xs font-mono px-2 py-1 rounded mb-3">{project.lang}</span>
+                        <h3 className="text-lg font-semibold mb-2 font-mono">{project[`title_${lang}`]}</h3>
+                        <p className="text-sm text-dim mb-5 flex-1">{project[`description_${lang}`]}</p>
+                        <span className="btn-ghost text-sm font-medium py-2 px-4 rounded-md inline-flex items-center gap-2 self-start">
+                            <i className="fab fa-github"></i>{langContent.portfolio.view[lang]}
+                        </span>
+                    </div>
+                </a>
+            );
+        };
 
-                                                                                                                                                    return (
-                                                                                                                                                        <section id="skills" className="py-16 md:py-24 section-with-bg">
-                                                                                                                                                            <div className="section-content-wrapper">
-                                                                                                                                                                <div className="container mx-auto px-4 md:px-8">
-                                                                                                                                                                    <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text fade-in-up">{langContent.skills.title[lang]}</h2>
-                                                                                                                                                                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-                                                                                                                                                                        <div ref={baRef} className="card-bg p-8 rounded-lg fade-in-up" style={{ animationDelay: '0.2s' }}>
-                                                                                                                                                                            <h3 className="text-2xl font-semibold mb-6 text-center" style={{ color: 'var(--accent-color)' }}>{langContent.skills.businessAnalysisTitle[lang]}</h3>
-                                                                                                                                                                            <div className="space-y-6">
-                                                                                                                                                                                {langContent.skills.businessAnalysis.map(skill => (
-                                                                                                                                                                                    <div key={skill.id}>
-                                                                                                                                                                                        <h4 className="font-bold text-lg mb-2">{skill[`title_${lang}`]}</h4>
-                                                                                                                                                                                        <div className="flex flex-wrap gap-2">
-                                                                                                                                                                                            {skill.tags.map(tag => <span key={tag} className="tag text-sm py-1 px-3 rounded-full">{tag}</span>)}
-                                                                                                                                                                            </div>
-                                                                                                                                                                        </div>
-                                                                                                                                                                    ))}
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                                                                                                                                            <div ref={pmRef} className="card-bg p-8 rounded-lg fade-in-up" style={{ animationDelay: '0.4s' }}>
-                                                                                                                                                                <h3 className="text-2xl font-semibold mb-6 text-center" style={{ color: 'var(--accent-color-rose)' }}>{langContent.skills.productManagementTitle[lang]}</h3>
-                                                                                                                                                                <div className="space-y-6">
-                                                                                                                                                                    {langContent.skills.productManagement.map(skill => (
-                                                                                                                                                                        <div key={skill.id}>
-                                                                                                                                                                            <h4 className="font-bold text-lg mb-2">{skill[`title_${lang}`]}</h4>
-                                                                                                                                                                            <div className="flex flex-wrap gap-2">
-                                                                                                                                                                                {skill.tags.map(tag => <span key={tag} className="tag-rose text-sm py-1 px-3 rounded-full">{tag}</span>)}
-                                                                                                                                                                            </div>
-                                                                                                                                                                        </div>
-                                                                                                                                                        ))}
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                                                                                                                                            <div ref={langRef} className="card-bg p-8 rounded-lg lg:col-span-2 fade-in-up" style={{ animationDelay: '0.6s' }}>
-                                                                                                                                                                <h3 className="text-2xl font-semibold mb-6 text-center" style={{ color: 'var(--accent-color)' }}>{langContent.skills.langTitle[lang]}</h3>
-                                                                                                                                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                                                                                                                                                    {langContent.skills.languages.map((language, index) => (
-                                                                                                                                                                        <React.Fragment key={language.id}>
-                                                                                                                                                                            <div className="text-center">
-                                                                                                                                                                                <p className="text-xl font-bold">{language[`name_${lang}`]}</p>
-                                                                                                                                                                                <p className="text-md text-secondary">{language[`level_${lang}`]}</p>
-                                                                                                                                                                            </div>
-                                                                                                                                                            </React.Fragment>
-                                                                                                                                                        ))}
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                            </div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                            </section>
-                                                                                                                                        );
-                                                                                                                                    };
+        const Portfolio = ({ lang }) => {
+            const ref = useRef();
+            useFadeInUp(ref);
+            return (
+                <section id="projects" className="py-16 md:py-24">
+                    <div className="container mx-auto px-4 md:px-8">
+                        <div ref={ref} className="text-center mb-16 fade-in-up">
+                            <p className="eyebrow text-dim mb-3">{langContent.portfolio.eyebrow[lang]}</p>
+                            <h2 className="text-3xl md:text-4xl font-display font-semibold mb-3">{langContent.portfolio.title[lang]}</h2>
+                            <p className="text-dim">{langContent.portfolio.subtitle[lang]}</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {portfolioData.projects.map((project, index) => (
+                                <ProjectCard key={project.id} project={project} lang={lang} index={index} />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-                                                        const Footer = ({ lang }) => {
-                                                            const currentYear = new Date().getFullYear();
-                                                            return (
-                                                                <footer className="py-8 section-bg border-t" style={{ borderColor: 'var(--border-color)' }}>
-                                                                    <div className="container mx-auto px-4 md:px-8 text-center text-secondary">
-                                                                        <p>&copy; {currentYear} Pedro Caio Feitosa Teles</p>
-                                                                    </div>
-                    </footer>
-                                                        );
-                                                    };
+        const Certificates = ({ lang }) => {
+            const ref = useRef();
+            useFadeInUp(ref);
+            const duplicatedCerts = [...portfolioData.certificates, ...portfolioData.certificates];
 
-                                                        // Main App Component
-                                                        function App() {
-                                                            const [theme, setTheme] = useState('dark');
-                                                            const [lang, setLang] = useState('pt');
+            return (
+                <section id="certificates" ref={ref} className="py-16 md:py-24 section-alt fade-in-up" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+                    <div className="container mx-auto px-4 md:px-8">
+                        <div className="text-center mb-16">
+                            <p className="eyebrow text-dim mb-3">{langContent.certificates.eyebrow[lang]}</p>
+                            <h2 className="text-3xl md:text-4xl font-display font-semibold">{langContent.certificates.title[lang]}</h2>
+                        </div>
+                        <div className="carousel-wrapper w-full overflow-hidden relative">
+                            <div className="flex animate-scroll">
+                                {duplicatedCerts.map((cert, index) => (
+                                    <div key={index} className="flex-shrink-0 w-60 mx-3">
+                                        <div className="card p-6 rounded-lg flex flex-col items-center text-center h-full">
+                                            <i className="fas fa-certificate text-3xl mb-4" style={{ color: cert.category === 'product' ? 'var(--gold)' : 'var(--azul)' }}></i>
+                                            <h4 className="text-base font-semibold mb-1">{cert[`name_${lang}`]}</h4>
+                                            <p className="text-sm italic text-dim mb-1">{cert.institution}</p>
+                                            <p className="font-mono text-xs text-dim mb-5">{cert[`hours_${lang}`]}</p>
+                                            <a href={cert.link} target="_blank" rel="noopener noreferrer" className="btn-ghost text-xs font-medium py-2 px-4 rounded-md mt-auto">{langContent.certificates.download[lang]}</a>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-                                                        useEffect(() => {
-                                                            const savedTheme = localStorage.getItem('theme') || 'dark';
-                                                            setTheme(savedTheme);
-                                                            const savedLang = localStorage.getItem('lang') || 'pt';
-                                                            setLang(savedLang);
-                                                        }, []);
+        const SkillGroup = ({ title, tags, tagClass }) => (
+            <div>
+                <h4 className="font-semibold text-base mb-2">{title}</h4>
+                <div className="flex flex-wrap gap-2">
+                    {tags.map(tag => <span key={tag} className={`${tagClass} text-sm py-1 px-3 rounded-full`}>{tag}</span>)}
+                </div>
+            </div>
+        );
 
-                                                        useEffect(() => {
-                                                            document.body.className = '';
-                        if (theme === 'light') {
-                            document.body.classList.add('light-theme');
-                        }
-                                                        localStorage.setItem('theme', theme);
-                                                    }, [theme]);
+        const Skills = ({ lang }) => {
+            const baRef = useRef();
+            const pmRef = useRef();
+            const langRef = useRef();
+            useFadeInUp(baRef);
+            useFadeInUp(pmRef);
+            useFadeInUp(langRef);
 
-                                                        useEffect(() => {
-                        document.documentElement.lang = lang;
-                        localStorage.setItem('lang', lang);
-                                                    }, [lang]);
+            return (
+                <section id="skills" className="py-16 md:py-24">
+                    <div className="container mx-auto px-4 md:px-8">
+                        <div className="text-center mb-16">
+                            <p className="eyebrow text-dim mb-3">{langContent.skills.eyebrow[lang]}</p>
+                            <h2 className="text-3xl md:text-4xl font-display font-semibold">{langContent.skills.title[lang]}</h2>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                            <div ref={baRef} className="card p-8 rounded-lg fade-in-up">
+                                <h3 className="text-xl font-display font-semibold mb-6 text-center" style={{ color: 'var(--azul)' }}>{langContent.skills.businessAnalysisTitle[lang]}</h3>
+                                <div className="space-y-6">
+                                    {langContent.skills.businessAnalysis.map(skill => (
+                                        <SkillGroup key={skill.id} title={skill[`title_${lang}`]} tags={skill.tags} tagClass="tag" />
+                                    ))}
+                                </div>
+                            </div>
+                            <div ref={pmRef} className="card p-8 rounded-lg fade-in-up" style={{ animationDelay: '0.1s' }}>
+                                <h3 className="text-xl font-display font-semibold mb-6 text-center" style={{ color: 'var(--gold)' }}>{langContent.skills.productManagementTitle[lang]}</h3>
+                                <div className="space-y-6">
+                                    {langContent.skills.productManagement.map(skill => (
+                                        <SkillGroup key={skill.id} title={skill[`title_${lang}`]} tags={skill.tags} tagClass="tag-gold" />
+                                    ))}
+                                </div>
+                            </div>
+                            <div ref={langRef} className="card p-8 rounded-lg lg:col-span-2 fade-in-up" style={{ animationDelay: '0.2s' }}>
+                                <h3 className="text-xl font-display font-semibold mb-6 text-center" style={{ color: 'var(--azul)' }}>{langContent.skills.langTitle[lang]}</h3>
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    {langContent.skills.languages.map((language) => (
+                                        <div key={language.id} className="text-center">
+                                            <p className="text-lg font-semibold">{language[`name_${lang}`]}</p>
+                                            <p className="font-mono text-sm text-dim">{language[`level_${lang}`]}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-                                                        return (
-                                                            <React.Fragment>
-                                                                <Navbar lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
-                                                                <main>
-                                                                    <Hero lang={lang} />
-                                                                    <AboutAndExperience lang={lang} />
-                                                                    <Portfolio lang={lang} />
-                                                                    <Certificates lang={lang} />
-                                                                    <Skills lang={lang} />
-                                                                </main>
-                                                                <Footer lang={lang} />
-                                                            </React.Fragment>
-                                                        );
-                                                    }
+        const ContactStrip = ({ lang }) => {
+            const ref = useRef();
+            useFadeInUp(ref);
+            return (
+                <section className="py-16 md:py-20 section-alt" style={{ borderTop: '1px solid var(--border)' }}>
+                    <div ref={ref} className="container mx-auto px-4 md:px-8 text-center max-w-2xl fade-in-up">
+                        <h2 className="text-2xl md:text-3xl font-display font-semibold mb-3">{langContent.footer.cta[lang]}</h2>
+                        <p className="text-dim mb-8">{langContent.footer.ctaText[lang]}</p>
+                        <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" rel="noopener noreferrer" className="btn-primary font-semibold py-3 px-8 rounded-lg text-base inline-block">{langContent.footer.linkedinButton[lang]}</a>
+                    </div>
+                </section>
+            );
+        };
 
-                                                        const container = document.getElementById('root');
-                                                        const root = ReactDOM.createRoot(container);
-                                                        root.render(<App />);
+        const Footer = () => {
+            const currentYear = new Date().getFullYear();
+            return (
+                <footer className="py-8" style={{ borderTop: '1px solid var(--border)' }}>
+                    <div className="container mx-auto px-4 md:px-8 text-center text-dim text-sm">
+                        <p>&copy; {currentYear} Pedro Caio Feitosa Teles</p>
+                    </div>
+                </footer>
+            );
+        };
 
-</script>
+        // ---------------------------------------------------------------
+        // App
+        // ---------------------------------------------------------------
+        function App() {
+            const [theme, setTheme] = useState('light');
+            const [lang, setLang] = useState('pt');
+
+            useEffect(() => {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                setTheme(savedTheme);
+                const savedLang = localStorage.getItem('lang') || 'pt';
+                setLang(savedLang);
+            }, []);
+
+            useEffect(() => {
+                document.body.className = theme === 'light' ? 'light-theme' : '';
+                localStorage.setItem('theme', theme);
+            }, [theme]);
+
+            useEffect(() => {
+                document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+                localStorage.setItem('lang', lang);
+            }, [lang]);
+
+            return (
+                <React.Fragment>
+                    <Navbar lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
+                    <main>
+                        <Hero lang={lang} />
+                        <AboutAndExperience lang={lang} />
+                        <Portfolio lang={lang} />
+                        <Certificates lang={lang} />
+                        <Skills lang={lang} />
+                        <ContactStrip lang={lang} />
+                    </main>
+                    <Footer />
+                </React.Fragment>
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
 </body>
 
 </html>
