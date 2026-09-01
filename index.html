@@ -191,8 +191,9 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        .animate-scroll { animation: scroll-x 32s linear infinite; }
-        .carousel-wrapper:hover .animate-scroll { animation-play-state: paused; }
+        .animate-scroll { animation-name: scroll-x; animation-timing-function: linear; animation-iteration-count: infinite; }
+        .carousel-wrapper:hover .animate-scroll,
+        .carousel-wrapper:focus-within .animate-scroll { animation-play-state: paused; }
 
         /* Signature element: azulejo tile motif, used once, in the hero */
         .azulejo-field {
@@ -247,46 +248,39 @@
         const portfolioData = {
             projects: [
                 {
-                    id: 1, icon: 'fa-utensils', lang: 'TypeScript',
-                    title_pt: "dumbfood", title_en: "dumbfood",
-                    description_pt: "PWA que importa receitas de sites brasileiros, reescala porções e gera uma lista de mercado unificada, somada e organizada por seção do mercado.",
-                    description_en: "A PWA that imports recipes from Brazilian recipe sites, rescales servings, and builds a unified, aisle-organized shopping list.",
-                    link: "https://github.com/eusouopeu/dumbfood"
-                },
-                {
-                    id: 2, icon: 'fa-stopwatch', lang: 'PWA',
+                    id: 1, icon: 'fa-stopwatch', lang: 'PWA',
                     title_pt: "rotinas", title_en: "rotinas",
-                    description_pt: "Rotinas cronometradas e notas rápidas em markdown, com agendamento e estimativa de término.",
-                    description_en: "Timed routines and quick markdown notes, with scheduling and finish-time estimates.",
+                    description_pt: "Rotinas cronometradas e notas rápidas em markdown, com agendamento e estimativa de horário de término.",
+                    description_en: "Timed routines and quick markdown notes, with scheduling and end-time estimates.",
                     link: "https://github.com/eusouopeu/rotinas"
                 },
                 {
-                    id: 3, icon: 'fa-terminal', lang: 'Python',
-                    title_pt: "textia", title_en: "textia",
-                    description_pt: "Assistente de IA global para macOS: intercepta comandos digitados em qualquer aplicativo via pynput e a API da Anthropic.",
-                    description_en: "A global AI assistant for macOS: intercepts typed commands in any app via pynput and the Anthropic API.",
-                    link: "https://github.com/eusouopeu/textia"
+                    id: 2, icon: 'fa-utensils', lang: 'TypeScript',
+                    title_pt: "dumbfood", title_en: "dumbfood",
+                    description_pt: "PWA que importa receitas de sites e vídeos, reescala porções e monta a lista de compras do mercado — unificada, somada e por gôndola.",
+                    description_en: "A PWA that imports recipes from sites and videos, rescales portions, and builds a unified, aisle-sorted grocery list.",
+                    link: "https://github.com/eusouopeu/dumbfood"
                 },
                 {
-                    id: 4, icon: 'fa-puzzle-piece', lang: 'TypeScript',
-                    title_pt: "brita-routines", title_en: "brita-routines",
-                    description_pt: "Plugin do Obsidian para rotinas com passos temporizados e execução guiada, no estilo do app Brita.",
-                    description_en: "An Obsidian plugin for timed, step-by-step guided routines, in the style of the Brita app.",
-                    link: "https://github.com/eusouopeu/brita-routines"
+                    id: 3, icon: 'fa-guitar', lang: 'TypeScript',
+                    title_pt: "cifrasGroup", title_en: "cifrasGroup",
+                    description_pt: "Leitor de cifras para violão com simplificação harmônica automática, busca de digitações e metrônomo que toca a batida — tudo no navegador, sem servidor.",
+                    description_en: "A guitar chord-sheet reader with automatic harmonic simplification, fingering search, and a metronome that plays the beat — runs entirely in the browser.",
+                    link: "https://github.com/eusouopeu/cifrasGroup"
                 },
                 {
-                    id: 5, icon: 'fa-layer-group', lang: 'TypeScript',
-                    title_pt: "anki-cloze-raycast", title_en: "anki-cloze-raycast",
-                    description_pt: "Extensão Raycast para criar flashcards Cloze no Anki, ocultando automaticamente números, prazos e valores em textos jurídicos e técnicos.",
-                    description_en: "A Raycast extension for creating Anki Cloze flashcards, automatically hiding numbers, deadlines, and figures in legal and technical text.",
-                    link: "https://github.com/eusouopeu/anki-cloze-raycast"
+                    id: 4, icon: 'fa-graduation-cap', lang: 'React',
+                    title_pt: "cognidex", title_en: "cognidex",
+                    description_pt: "App que compara técnicas de estudo lado a lado, identifica plantas por foto e organiza guias passo a passo — funciona offline como PWA ou app Android.",
+                    description_en: "An app that compares study techniques side by side, identifies plants from a photo, and organizes step-by-step guides — works offline as a PWA or Android app.",
+                    link: "https://github.com/eusouopeu/bookdex"
                 },
                 {
-                    id: 6, icon: 'fa-language', lang: 'TypeScript',
-                    title_pt: "anki-lingo", title_en: "anki-lingo",
-                    description_pt: "Extensão Raycast: tradutor de mandarim e dicionário de nuances do português, com integração direta ao Anki.",
-                    description_en: "Raycast extension: Mandarin translator and Portuguese nuance dictionary, with direct Anki flashcard integration.",
-                    link: "https://github.com/eusouopeu/anki-lingo"
+                    id: 5, icon: 'fa-clapperboard', lang: 'React',
+                    title_pt: "lingoflix", title_en: "lingoflix",
+                    description_pt: "Recomendador de filmes e séries por idioma, gênero e plataforma de streaming, para praticar um novo idioma assistindo ao que realmente interessa.",
+                    description_en: "A movie and show recommender filtered by language, genre, and streaming platform — practice a new language by watching what actually interests you.",
+                    link: "https://github.com/eusouopeu/lingoflix"
                 },
             ],
             certificates: [
@@ -347,7 +341,9 @@
             certificates: {
                 eyebrow: { pt: "REGISTRO", en: "RECORD" },
                 title: { pt: "Certificados & Cursos", en: "Certificates & Courses" },
-                download: { pt: "Ver PDF", en: "View PDF" }
+                download: { pt: "Ver PDF", en: "View PDF" },
+                pause: { pt: "Pausar", en: "Pause" },
+                play: { pt: "Retomar", en: "Play" }
             },
             skills: {
                 eyebrow: { pt: "COMPETÊNCIAS", en: "COMPETENCIES" },
@@ -563,17 +559,36 @@
         const Certificates = ({ lang }) => {
             const ref = useRef();
             useFadeInUp(ref);
+            const [isPaused, setIsPaused] = useState(false);
             const duplicatedCerts = [...portfolioData.certificates, ...portfolioData.certificates];
+            // Duration scales with the number of certificates so pace stays
+            // readable as more are added, instead of a fixed speed that
+            // outruns a growing list.
+            const scrollDuration = `${portfolioData.certificates.length * 2.4}s`;
 
             return (
                 <section id="certificates" ref={ref} className="py-16 md:py-24 section-alt fade-in-up" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
                     <div className="container mx-auto px-4 md:px-8">
-                        <div className="text-center mb-16">
+                        <div className="text-center mb-8">
                             <p className="eyebrow text-dim mb-3">{langContent.certificates.eyebrow[lang]}</p>
                             <h2 className="text-3xl md:text-4xl font-display font-semibold">{langContent.certificates.title[lang]}</h2>
                         </div>
+                        <div className="flex justify-center mb-8">
+                            <button
+                                onClick={() => setIsPaused(!isPaused)}
+                                aria-pressed={isPaused}
+                                aria-label={isPaused ? langContent.certificates.play[lang] : langContent.certificates.pause[lang]}
+                                className="btn-ghost text-xs font-medium py-2 px-4 rounded-full inline-flex items-center gap-2"
+                            >
+                                <i className={`fas ${isPaused ? 'fa-play' : 'fa-pause'}`}></i>
+                                {isPaused ? langContent.certificates.play[lang] : langContent.certificates.pause[lang]}
+                            </button>
+                        </div>
                         <div className="carousel-wrapper w-full overflow-hidden relative">
-                            <div className="flex animate-scroll">
+                            <div
+                                className="flex animate-scroll"
+                                style={{ animationDuration: scrollDuration, animationPlayState: isPaused ? 'paused' : undefined }}
+                            >
                                 {duplicatedCerts.map((cert, index) => (
                                     <div key={index} className="flex-shrink-0 w-60 mx-3">
                                         <div className="card p-6 rounded-lg flex flex-col items-center text-center h-full">
