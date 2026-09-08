@@ -239,8 +239,10 @@ const langContent = {
         eyebrow: { pt: "REGISTRO", en: "RECORD" },
         title: { pt: "Certificados & Cursos", en: "Certificates & Courses" },
         download: { pt: "Ver PDF", en: "View PDF" },
-        pause: { pt: "Pausar", en: "Pause" },
-        play: { pt: "Retomar", en: "Play" },
+        viewCarousel: { pt: "Carrossel", en: "Carousel" },
+        viewAll: { pt: "Ver todos", en: "Show all" },
+        prev: { pt: "Certificado anterior", en: "Previous certificate" },
+        next: { pt: "Próximo certificado", en: "Next certificate" },
     },
     skills: {
         eyebrow: { pt: "COMPETÊNCIAS", en: "COMPETENCIES" },

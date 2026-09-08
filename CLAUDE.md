@@ -1,3 +1,8 @@
+# Workflow
+
+Toda mudança no código dos sites-portfolio (qualquer arquivo deste repositório) deve ser
+seguida por commit e push para o GitHub — não deixar alterações apenas no working directory.
+
 # Melhorias futuras
 
 ## Páginas de estudo de caso por projeto (não implementado)
