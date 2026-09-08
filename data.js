@@ -10,7 +10,7 @@ const portfolioData = {
             title_pt: "rotinas", title_en: "rotinas",
             description_pt: "Rotinas cronometradas e notas rápidas em markdown, com agendamento e estimativa de horário de término.",
             description_en: "Timed routines and quick markdown notes, with scheduling and end-time estimates.",
-            link: "eusouopeu.github.io/rotinas",
+            link: "https://eusouopeu.github.io/rotinas",
             areas: ['produto'],
         },
         {
@@ -18,7 +18,7 @@ const portfolioData = {
             title_pt: "dumbfood", title_en: "dumbfood",
             description_pt: "PWA que importa receitas de sites e vídeos, reescala porções e monta a lista de compras do mercado — unificada, somada e por gôndola.",
             description_en: "A PWA that imports recipes from sites and videos, rescales portions, and builds a unified, aisle-sorted grocery list.",
-            link: "eusouopeu.github.io/dumbfood",
+            link: "https://eusouopeu.github.io/dumbfood",
             areas: ['produto'],
         },
         {
@@ -26,7 +26,7 @@ const portfolioData = {
             title_pt: "cifrasGroup", title_en: "cifrasGroup",
             description_pt: "Leitor de cifras para violão com simplificação harmônica automática, busca de digitações e metrônomo que toca a batida — tudo no navegador, sem servidor.",
             description_en: "A guitar chord-sheet reader with automatic harmonic simplification, fingering search, and a metronome that plays the beat — runs entirely in the browser.",
-            link: "eusouopeu.github.io/cifrasGroup",
+            link: "https://eusouopeu.github.io/cifrasGroup",
             areas: ['produto'],
         },
         {
@@ -34,7 +34,7 @@ const portfolioData = {
             title_pt: "cognidex", title_en: "cognidex",
             description_pt: "App que compara técnicas de estudo lado a lado, identifica plantas por foto e organiza guias passo a passo — funciona offline como PWA ou app Android.",
             description_en: "An app that compares study techniques side by side, identifies plants from a photo, and organizes step-by-step guides — works offline as a PWA or Android app.",
-            link: "eusouopeu.github.io/bookdex",
+            link: "https://eusouopeu.github.io/bookdex",
             areas: ['produto'],
         },
         {
@@ -42,7 +42,7 @@ const portfolioData = {
             title_pt: "lingoflix", title_en: "lingoflix",
             description_pt: "Recomendador de filmes e séries por idioma, gênero e plataforma de streaming, para praticar um novo idioma assistindo ao que realmente interessa.",
             description_en: "A movie and show recommender filtered by language, genre, and streaming platform — practice a new language by watching what actually interests you.",
-            link: "eusouopeu.github.io/lingoflix",
+            link: "https://eusouopeu.github.io/lingoflix",
             areas: ['produto'],
         },
         {
