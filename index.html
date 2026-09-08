@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Teles — Análise de Negócios & Gestão de Produto</title>
-    <meta name="description" content="Pedro Teles — estudante de Administração (UFBA), atuando com Análise de Negócios e Gestão de Produto. Portfólio, experiência e certificações.">
-    <meta property="og:title" content="Pedro Teles — Análise de Negócios & Gestão de Produto">
-    <meta property="og:description" content="Portfólio e currículo de Pedro Teles: análise de negócios, gestão de produto e desenvolvimento web.">
+    <title>Pedro Teles — Portfólio</title>
+    <meta name="description" content="Pedro Teles — estudante de Administração (UFBA). Escolha uma área — Finanças, Operações, Marketing & Growth ou Produto — para ver o portfólio, currículo e certificações correspondentes.">
+    <meta property="og:title" content="Pedro Teles — Portfólio">
+    <meta property="og:description" content="Escolha uma área — Finanças, Operações, Marketing & Growth ou Produto — para ver o portfólio, currículo e certificações correspondentes.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eusouopeu.github.io">
     <meta property="og:image" content="https://eusouopeu.github.io/images/profile-square.png">
@@ -239,476 +239,71 @@
     </script>
     <div id="root"></div>
 
+    <script src="data.js"></script>
     <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+        const { useState, useEffect } = React;
 
-        // ---------------------------------------------------------------
-        // Data
-        // ---------------------------------------------------------------
-        const portfolioData = {
-            projects: [
-                {
-                    id: 1, icon: 'fa-stopwatch', lang: 'PWA',
-                    title_pt: "rotinas", title_en: "rotinas",
-                    description_pt: "Rotinas cronometradas e notas rápidas em markdown, com agendamento e estimativa de horário de término.",
-                    description_en: "Timed routines and quick markdown notes, with scheduling and end-time estimates.",
-                    link: "eusouopeu.github.io/rotinas"
-                },
-                {
-                    id: 2, icon: 'fa-utensils', lang: 'TypeScript',
-                    title_pt: "dumbfood", title_en: "dumbfood",
-                    description_pt: "PWA que importa receitas de sites e vídeos, reescala porções e monta a lista de compras do mercado — unificada, somada e por gôndola.",
-                    description_en: "A PWA that imports recipes from sites and videos, rescales portions, and builds a unified, aisle-sorted grocery list.",
-                    link: "eusouopeu.github.io/dumbfood"
-                },
-                {
-                    id: 3, icon: 'fa-guitar', lang: 'TypeScript',
-                    title_pt: "cifrasGroup", title_en: "cifrasGroup",
-                    description_pt: "Leitor de cifras para violão com simplificação harmônica automática, busca de digitações e metrônomo que toca a batida — tudo no navegador, sem servidor.",
-                    description_en: "A guitar chord-sheet reader with automatic harmonic simplification, fingering search, and a metronome that plays the beat — runs entirely in the browser.",
-                    link: "eusouopeu.github.io/cifrasGroup"
-                },
-                {
-                    id: 4, icon: 'fa-graduation-cap', lang: 'React',
-                    title_pt: "cognidex", title_en: "cognidex",
-                    description_pt: "App que compara técnicas de estudo lado a lado, identifica plantas por foto e organiza guias passo a passo — funciona offline como PWA ou app Android.",
-                    description_en: "An app that compares study techniques side by side, identifies plants from a photo, and organizes step-by-step guides — works offline as a PWA or Android app.",
-                    link: "eusouopeu.github.io/bookdex"
-                },
-                {
-                    id: 5, icon: 'fa-clapperboard', lang: 'React',
-                    title_pt: "lingoflix", title_en: "lingoflix",
-                    description_pt: "Recomendador de filmes e séries por idioma, gênero e plataforma de streaming, para praticar um novo idioma assistindo ao que realmente interessa.",
-                    description_en: "A movie and show recommender filtered by language, genre, and streaming platform — practice a new language by watching what actually interests you.",
-                    link: "eusouopeu.github.io/lingoflix"
-                },
-                {
-                    id: 6, icon: 'fa-clapperboard', lang: 'pdf',
-                    title_pt: "Aval. do Desempenho Operacional – Guararapes", title_en: "Eval. of Operational Performance – Guararapes",
-                    description_pt: "Análise financeira de 5 anos a partir de Balanço Patrimonial, DRE e Fluxo de Caixa: indicadores de liquidez e atividade (giro/cobertura de estoque, PMR, PMP, ciclo de caixa, NCG) e de lucratividade (margens bruta, operacional e líquida).",
-                    description_en: "Financial analysis of 5 years based on Balance Sheet, Income Statement and Cash Flow: liquidity and activity indicators (turnover/stock coverage, cash cycle, etc.) and profitability (gross, operating and net margins).",
-                    link: "projects/Relatório PCO.pdf"
-                },
-            ],
-            certificates: [
-                { id: 1, name_pt: 'Product Management', name_en: 'Product Management', institution: 'Cubos Academy', hours_pt: '50 horas', hours_en: '50 hours', link: 'certificates/Certificado-Product-Management.pdf', category: 'product' },
-                { id: 2, name_pt: 'Desenvolvimento Web', name_en: 'Web Development', institution: 'InfoJr UFBA', hours_pt: '44 horas', hours_en: '44 hours', link: 'certificates/Certificado-InfoJr.pdf', category: 'business' },
-                { id: 3, name_pt: 'Design Thinking', name_en: 'Design Thinking', institution: 'Inst. de Computação UFBA', hours_pt: '30 horas', hours_en: '30 hours', link: 'certificates/Certificado-Design-Thinking.pdf', category: 'product' },
-                { id: 4, name_pt: 'SQL para Análise de Dados', name_en: 'SQL for Data Analysis', institution: 'Inst. de Computação UFBA', hours_pt: '30 horas', hours_en: '30 hours', link: 'certificates/Certificado-SQL.pdf', category: 'business' },
-                { id: 5, name_pt: 'TypeScript', name_en: 'TypeScript', institution: 'Cubos Academy', hours_pt: '22 horas', hours_en: '22 hours', link: 'certificates/Certificado-Typescript.pdf', category: 'business' },
-                { id: 6, name_pt: 'React', name_en: 'React', institution: 'Cubos Academy', hours_pt: '21 horas', hours_en: '21 hours', link: 'certificates/Certificado-React.pdf', category: 'business' },
-                { id: 7, name_pt: 'Next.js', name_en: 'Next.js', institution: 'Cubos Academy', hours_pt: '15 horas', hours_en: '15 hours', link: 'certificates/Certificado-Next.pdf', category: 'business' },
-                { id: 8, name_pt: 'Fundamentos para Análise de Dados', name_en: 'Data Analysis Fundamentals', institution: 'Microsoft', hours_pt: '10 horas', hours_en: '10 hours', link: 'certificates/Certificado-Dados.pdf', category: 'business' },
-                { id: 9, name_pt: 'Fundamentos de Análise de Negócios', name_en: 'Business Analysis Fundamentals', institution: 'Microsoft', hours_pt: '10 horas', hours_en: '10 hours', link: 'certificates/Certificado-Fundamentos-para-Analise-de-Negocios-por-Microsoft.pdf', category: 'business' },
-                { id: 10, name_pt: 'Figma', name_en: 'Figma', institution: 'Cubos Academy', hours_pt: '8 horas', hours_en: '8 hours', link: 'certificates/Certificado-Figma.pdf', category: 'product' },
-                { id: 11, name_pt: 'Métricas de Negócios Digitais', name_en: 'Digital Business Metrics', institution: 'Cubos Academy', hours_pt: '5 horas', hours_en: '5 hours', link: 'certificates/Certificado-Métricas-de-Negócio.pdf', category: 'business' },
-                { id: 12, name_pt: 'Excel', name_en: 'Excel', institution: 'LinkedIn Learning', hours_pt: '2,5 horas', hours_en: '2.5 hours', link: 'certificates/Certificado-Excel-Essential-Training.pdf', category: 'business' },
-                { id: 13, name_pt: 'Harrow House', name_en: 'Harrow House', institution: 'Harrow House', hours_pt: 'Curso de inglês', hours_en: 'English course', link: 'certificates/Certificado-Harrow-House.pdf', category: 'business' },
-            ]
+        const hubContent = {
+            eyebrow: { pt: "PORTFÓLIO / CURRÍCULO", en: "PORTFOLIO / RÉSUMÉ" },
+            greeting: { pt: "Olá, sou", en: "Hi, I'm" },
+            title: { pt: "Análise de Negócios & Gestão de Produto", en: "Business Analysis & Product Management" },
+            facts: { pt: "Salvador, BA — Brasil  ·  Administração, UFBA  ·  PT · EN · IT · 中文", en: "Salvador, Bahia — Brazil  ·  Administration, UFBA  ·  PT · EN · IT · 中文" },
+            bio: {
+                pt: "Estudante de Administração da UFBA, na interseção entre dados, produto e operações. Escolha abaixo a área que mais se conecta com a vaga que você está avaliando — cada uma mostra os projetos, certificados e habilidades mais relevantes para ela.",
+                en: "Administration student at UFBA, working at the intersection of data, product, and operations. Pick the area below that best matches the role you're evaluating — each one shows the projects, certificates, and skills most relevant to it.",
+            },
+            pickerEyebrow: { pt: "ESCOLHA UMA ÁREA", en: "CHOOSE AN AREA" },
+            genericCv: { pt: "Baixar currículo padrão", en: "Download general résumé" },
         };
 
-        const langContent = {
-            nav: {
-                about: { pt: "Sobre", en: "About" },
-                experience: { pt: "Experiência", en: "Experience" },
-                projects: { pt: "Projetos", en: "Projects" },
-                certificates: { pt: "Certificados", en: "Certificates" },
-                skills: { pt: "Habilidades", en: "Skills" },
-            },
-            hero: {
-                eyebrow: { pt: "PORTFÓLIO / CURRÍCULO", en: "PORTFOLIO / RÉSUMÉ" },
-                greeting: { pt: "Olá, sou", en: "Hi, I'm" },
-                title: { pt: "Análise de Negócios · Gestão de Produto", en: "Business Analysis · Product Management" },
-                facts: { pt: "Salvador, BA — Brasil  ·  Administração, UFBA  ·  PT · EN · IT · 中文", en: "Salvador, Bahia — Brazil  ·  Administration, UFBA  ·  PT · EN · IT · 中文" },
-                cvButton: { pt: "Baixar currículo", en: "Download résumé" },
-                scrollHint: { pt: "Sobre mim", en: "About me" }
-            },
-            about: {
-                eyebrow: { pt: "FICHA", en: "PROFILE" },
-                title: { pt: "Sobre Mim", en: "About Me" },
-                p1: { pt: "Estudante de Administração da UFBA apaixonado por transformar dados em estratégias de produto.", en: "Administration student at the Federal University of Bahia (UFBA), passionate about turning data into product strategy." },
-                p2: { pt: "Tenho a convicção de que as melhores soluções surgem da escuta ativa dos clientes e usuários e da análise dos dados que eles fornecem. Por esse motivo, venho construindo um repertório técnico que conecta técnicas qualitativas de descoberta de produto (como condução de entrevistas e grupos focais, prototipagem e testes A/B) a habilidades de análise quantitativa (estatística descritiva e inferencial, Excel, SQL, etc.).", en: "I'm convinced the best solutions come from actively listening to customers and users, and from analyzing the data they provide. That's why I've been building a technical toolkit that connects qualitative product-discovery techniques (interviews, focus groups, prototyping, A/B testing) with quantitative analysis skills (descriptive and inferential statistics, Excel, SQL, and more)." },
-                p3: { pt: "Possuo experiência prática em análise de requisitos, gestão ágil (Scrum) e desenvolvimento web (React e Next.js) em projetos da empresa júnior de computação da UFBA (InfoJr). Também aprendi, durante a minha experiência na InfoJr, a dialogar com profissionais da área de tecnologia (designers e desenvolvedores) e a traduzir insights de negócio para eles de forma clara e acionável.", en: "I have hands-on experience in requirements analysis, agile management (Scrum), and web development (React and Next.js) through projects at UFBA's computing junior enterprise (InfoJr). That experience also taught me how to work closely with tech professionals (designers and developers) and translate business insights for them clearly and actionably." },
-                p4: { pt: "Atualmente estou em busca de oportunidades de estágio nas áreas de análise de negócios ou de gestão de produto para aplicar e expandir minhas habilidades nessas áreas.", en: "I'm currently looking for internship opportunities in Business Analysis or Product Management to apply and expand my skills in design thinking, data analysis, requirements gathering, and product development." }
-            },
-            experience: {
-                title: { pt: "Experiência", en: "Experience" },
-                jobs: [
-                    { id: 1, date_pt: "Ago 2024 — Jan 2025", date_en: "Aug 2024 — Jan 2025", title_pt: "Gerente de Exomarketing", title_en: "Exomarketing Manager", company: "Empresa Júnior de Informática da UFBA (InfoJr)" },
-                    { id: 2, date_pt: "Abr 2024 — Jul 2024", date_en: "Apr 2024 — Jul 2024", title_pt: "Desenvolvedor Web (Trainee)", title_en: "Web Developer (Trainee)", company: "Empresa Júnior de Informática da UFBA (InfoJr)" },
-                    { id: 3, date_pt: "Set 2023 — Jun 2024", date_en: "Sep 2023 — Jun 2024", title_pt: "Presidente e Co-fundador", title_en: "President & Co-founder", company: "Liga Acadêmica Transdisciplinar de Tecnologia e Inovação (LATTI), UFBA" }
-                ]
-            },
-            portfolio: {
-                eyebrow: { pt: "TRABALHO", en: "WORK" },
-                title: { pt: "Projetos Recentes", en: "Recent Projects" },
-                subtitle: { pt: "Direto do GitHub — atualizado automaticamente conforme novos repositórios.", en: "Straight from GitHub — refreshed as new repos come out." },
-                view: { pt: "Ver no GitHub", en: "View on GitHub" }
-            },
-            certificates: {
-                eyebrow: { pt: "REGISTRO", en: "RECORD" },
-                title: { pt: "Certificados & Cursos", en: "Certificates & Courses" },
-                download: { pt: "Ver PDF", en: "View PDF" },
-                pause: { pt: "Pausar", en: "Pause" },
-                play: { pt: "Retomar", en: "Play" }
-            },
-            skills: {
-                eyebrow: { pt: "COMPETÊNCIAS", en: "COMPETENCIES" },
-                title: { pt: "Habilidades & Competências", en: "Skills & Competencies" },
-                businessAnalysisTitle: { pt: "Análise de Negócios", en: "Business Analysis" },
-                productManagementTitle: { pt: "Gestão de Produto", en: "Product Management" },
-                langTitle: { pt: "Idiomas", en: "Languages" },
-                businessAnalysis: [
-                    { id: 1, title_pt: "Metodologias de Análise", title_en: "Analysis Methodologies", tags: ["Design Thinking", "Double Diamond", "Benchmarking", "Análise Competitiva", "Análise de Lacunas", "Análise de Causa Raiz", "Jobs-to-be-Done"] },
-                    { id: 2, title_pt: "Levantamento de Requisitos", title_en: "Requirements Gathering", tags: ["Entrevistas", "Workshops", "Brainstorming", "Grupos Focais", "Questionários", "Prototipagem", "Storyboarding"] },
-                    { id: 3, title_pt: "Modelagem de Processos", title_en: "Process Modeling", tags: ["UML", "Diagramas de Raias", "Fluxogramas", "User Story Mapping", "Feature Decomposition"] },
-                    { id: 4, title_pt: "Análise de Dados e Métricas", title_en: "Data Analysis & Metrics", tags: ["SQL Avançado", "Python para Análise", "Design de KPIs", "Balanced Scorecard (BSC)", "Análise Estatística", "Testes A/B"] }
-                ],
-                productManagement: [
-                    { id: 1, title_pt: "Gerais", title_en: "General", tags: ["Plano de Marketing", "Lançamento de Produtos", "Jobs-to-be-Done", "Ciclo de Vida de Produtos", "Análise de Mercado", "Segmentação de Mercado", "Análise de Dados", "Acompanhamento de KPIs"] },
-                    { id: 2, title_pt: "Metodologias de Desenvolvimento", title_en: "Development Methodologies", tags: ["Double Diamond", "Design Thinking", "Lean Startup", "Construir-Medir-Aprender"] },
-                    { id: 3, title_pt: "Descoberta e Pesquisa", title_en: "Discovery & Research", tags: ["Pesquisa de Usuário", "Entrevistas com Clientes", "Criação de Personas", "Jornada do Cliente", "Análise Competitiva"] },
-                    { id: 4, title_pt: "Definição e Planejamento", title_en: "Definition & Planning", tags: ["User Stories", "Roadmap de Produto", "Método MoSCoW", "Framework RICE"] },
-                    { id: 5, title_pt: "Testes e Validação", title_en: "Testing & Validation", tags: ["MVP", "Prototipagem", "Teste A/B", "Teste de Usabilidade", "Agile/Scrum", "Planejamento de Sprint"] }
-                ],
-                languages: [
-                    { id: 1, name_pt: "Português", name_en: "Portuguese", level_pt: "Nativo", level_en: "Native" },
-                    { id: 2, name_pt: "Inglês", name_en: "English", level_pt: "Fluente", level_en: "Fluent" },
-                    { id: 3, name_pt: "Italiano", name_en: "Italian", level_pt: "Fluente", level_en: "Fluent" },
-                    { id: 4, name_pt: "Mandarim", name_en: "Mandarin", level_pt: "Intermediário (HSK 3)", level_en: "Intermediate (HSK 3)" }
-                ]
-            },
-            footer: {
-                cta: { pt: "Vamos conversar", en: "Let's talk" },
-                ctaText: { pt: "Aberto a oportunidades de estágio em Análise de Negócios e Gestão de Produto.", en: "Open to internship opportunities in Business Analysis and Product Management." },
-                linkedinButton: { pt: "Falar no LinkedIn", en: "Message on LinkedIn" }
-            }
+        const areaCardCopy = {
+            financas: { pt: "Análise financeira, modelagem e indicadores de desempenho.", en: "Financial analysis, modeling, and performance indicators." },
+            operacoes: { pt: "Planejamento estratégico, processos e indicadores operacionais.", en: "Strategic planning, process improvement, and operational indicators." },
+            growth: { pt: "Performance de negócios, growth analytics e benchmarking.", en: "Business performance, growth analytics, and benchmarking." },
+            produto: { pt: "Gestão de produto, pesquisa e desenvolvimento front-end.", en: "Product management, research, and front-end development." },
         };
 
-        // ---------------------------------------------------------------
-        // Hooks & helpers
-        // ---------------------------------------------------------------
-        const useFadeInUp = (ref) => {
-            useEffect(() => {
-                const observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('visible');
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { threshold: 0.12 }
-                );
-                const currentRef = ref.current;
-                if (currentRef) observer.observe(currentRef);
-                return () => { if (currentRef) observer.unobserve(currentRef); };
-            }, [ref]);
-        };
+        const AREA_ORDER = ['financas', 'operacoes', 'growth', 'produto'];
+        const AREA_ICON = { financas: 'fa-chart-line', operacoes: 'fa-gears', growth: 'fa-rocket', produto: 'fa-layer-group' };
 
-        // ---------------------------------------------------------------
-        // Components
-        // ---------------------------------------------------------------
-        const Navbar = ({ lang, setLang, theme, setTheme }) => {
-            const [isMenuOpen, setIsMenuOpen] = useState(false);
-            const [isScrolled, setIsScrolled] = useState(false);
-
-            useEffect(() => {
-                const handleScroll = () => setIsScrolled(window.scrollY > 40);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
-
+        const HubNavbar = ({ lang, setLang, theme, setTheme }) => {
             const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
             const toggleLang = () => setLang(lang === 'pt' ? 'en' : 'pt');
-
             return (
-                <nav className={`fixed w-full z-50 top-0 py-3 md:py-4 transition-all duration-300 ${isScrolled ? 'scrolled' : ''}`}>
+                <nav className="fixed w-full z-50 top-0 py-3 md:py-4">
                     <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-                        <a href="#home" className="text-xl md:text-2xl font-display font-semibold gradient-text">Pedro Teles</a>
-                        <div className="hidden md:flex items-center space-x-7 text-sm font-medium tracking-wide">
-                            {Object.entries(langContent.nav).map(([key, value]) => (
-                                <a key={key} href={`#${key}`} className="text-dim hover:text-current transition-colors duration-300">{value[lang]}</a>
-                            ))}
-                        </div>
+                        <span className="text-xl md:text-2xl font-display font-semibold gradient-text">Pedro Teles</span>
                         <div className="flex items-center gap-4">
                             <button onClick={toggleTheme} aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'} className="text-lg text-dim hover:text-current transition-colors duration-300">
                                 <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
                             </button>
                             <button onClick={toggleLang} aria-label="Alternar idioma" className="font-mono text-xs font-semibold text-dim hover:text-current transition-colors duration-300 border border-current rounded px-2 py-1" style={{ borderColor: 'var(--border)' }}>{lang === 'pt' ? 'EN' : 'PT'}</button>
-                            <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Abrir menu" className="md:hidden text-xl">
-                                <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
-                            </button>
                         </div>
                     </div>
-                    {isMenuOpen && (
-                        <div className="md:hidden mt-3" style={{ backgroundColor: 'var(--card)', borderTop: '1px solid var(--border)' }}>
-                            {Object.entries(langContent.nav).map(([key, value]) => (
-                                <a key={key} href={`#${key}`} className="block py-3 px-6 text-sm text-dim" onClick={() => setIsMenuOpen(false)}>{value[lang]}</a>
-                            ))}
-                        </div>
-                    )}
                 </nav>
             );
         };
 
-        const Hero = ({ lang }) => {
-            const ref = useRef();
-            useFadeInUp(ref);
-
-            return (
-                <header id="home" className="relative min-h-screen flex items-center justify-center text-center px-4 pt-24 md:pt-20 overflow-hidden">
-                    <div className="azulejo-field" aria-hidden="true"></div>
-                    <div ref={ref} className="relative max-w-3xl mx-auto fade-in-up">
-                        <p className="eyebrow text-dim mb-6">{langContent.hero.eyebrow[lang]}</p>
-                        <img src="images/profile-square.png" alt="Retrato de Pedro Teles" className="hero-frame w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto mb-7 object-cover" />
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold mb-4 leading-tight">
-                            {langContent.hero.greeting[lang]} <span className="gradient-text">Pedro Teles</span>
-                        </h1>
-                        <p className="text-lg md:text-xl mb-6 text-dim">{langContent.hero.title[lang]}</p>
-                        <p className="font-mono text-xs md:text-sm text-dim mb-10 tracking-wide">{langContent.hero.facts[lang]}</p>
-                        <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-                            <a href="certificates/Curriculo Pedro Teles.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary font-semibold py-3 px-8 rounded-lg text-base w-full sm:w-auto">{langContent.hero.cvButton[lang]}</a>
-                            <div className="flex justify-center space-x-6 text-2xl">
-                                <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-dim hover:text-current transition-colors duration-300"><i className="fab fa-linkedin"></i></a>
-                                <a href="https://github.com/eusouopeu" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-dim hover:text-current transition-colors duration-300"><i className="fab fa-github"></i></a>
-                                <a href="https://www.instagram.com/eusouopeu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-dim hover:text-current transition-colors duration-300"><i className="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#about" aria-label={langContent.hero.scrollHint[lang]} className="absolute bottom-8 text-dim text-xl animate-bounce hidden sm:block">
-                        <i className="fas fa-chevron-down"></i>
-                    </a>
-                </header>
-            );
-        };
-
-        const AboutAndExperience = ({ lang }) => {
-            const aboutRef = useRef();
-            const expRef = useRef();
-            useFadeInUp(aboutRef);
-            useFadeInUp(expRef);
-
-            return (
-                <section id="about" className="py-16 md:py-24 section-alt" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-                    <div className="container mx-auto px-4 md:px-8">
-                        <div className="grid md:grid-cols-5 gap-16 items-start">
-                            <div ref={aboutRef} className="md:col-span-2 fade-in-up">
-                                <p className="eyebrow text-dim mb-3">{langContent.about.eyebrow[lang]}</p>
-                                <h2 className="text-3xl md:text-4xl font-display font-semibold mb-8">{langContent.about.title[lang]}</h2>
-                                <div className="space-y-4 text-base md:text-lg leading-relaxed">
-                                    <p>{langContent.about.p1[lang]}</p>
-                                    <p className="text-dim">{langContent.about.p2[lang]}</p>
-                                    <p className="text-dim">{langContent.about.p3[lang]}</p>
-                                    <p className="pt-2 border-t" style={{ borderColor: 'var(--border)' }}>{langContent.about.p4[lang]}</p>
-                                </div>
-                            </div>
-                            <div ref={expRef} id="experience" className="md:col-span-3 fade-in-up" style={{ animationDelay: '0.1s' }}>
-                                <h2 className="text-3xl md:text-4xl font-display font-semibold mb-8">{langContent.experience.title[lang]}</h2>
-                                <div className="space-y-10">
-                                    {langContent.experience.jobs.map(job => (
-                                        <div key={job.id} className="ledger-item">
-                                            <p className="font-mono text-xs text-dim mb-1 tracking-wide">{job[`date_${lang}`]}</p>
-                                            <h3 className="text-xl font-semibold" style={{ color: 'var(--azul)' }}>{job[`title_${lang}`]}</h3>
-                                            <p className="text-base text-dim">{job.company}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const ProjectCard = ({ project, lang, index }) => {
-            return (
-                <a href={project.link} target="_blank" rel="noopener noreferrer"
-                   className="card rounded-lg overflow-hidden fade-in-up flex flex-col cursor-pointer no-underline"
-                   style={{ color: 'var(--ink)', animationDelay: `${index * 0.08}s` }}>
-                    <div className="card-icon-tile">
-                        <i className={`fas ${project.icon} text-4xl`} style={{ color: 'var(--azul)' }}></i>
-                    </div>
-                    <div className="p-6 flex flex-col flex-1">
-                        <span className="self-start tag text-xs font-mono px-2 py-1 rounded mb-3">{project.lang}</span>
-                        <h3 className="text-lg font-semibold mb-2 font-mono">{project[`title_${lang}`]}</h3>
-                        <p className="text-sm text-dim mb-5 flex-1">{project[`description_${lang}`]}</p>
-                        <span className="btn-ghost text-sm font-medium py-2 px-4 rounded-md inline-flex items-center gap-2 self-start">
-                            <i className="fab fa-github"></i>{langContent.portfolio.view[lang]}
-                        </span>
-                    </div>
-                </a>
-            );
-        };
-
-        const Portfolio = ({ lang }) => {
-            const ref = useRef();
-            useFadeInUp(ref);
-            return (
-                <section id="projects" className="py-16 md:py-24">
-                    <div className="container mx-auto px-4 md:px-8">
-                        <div ref={ref} className="text-center mb-16 fade-in-up">
-                            <p className="eyebrow text-dim mb-3">{langContent.portfolio.eyebrow[lang]}</p>
-                            <h2 className="text-3xl md:text-4xl font-display font-semibold mb-3">{langContent.portfolio.title[lang]}</h2>
-                            <p className="text-dim">{langContent.portfolio.subtitle[lang]}</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {portfolioData.projects.map((project, index) => (
-                                <ProjectCard key={project.id} project={project} lang={lang} index={index} />
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const Certificates = ({ lang }) => {
-            const ref = useRef();
-            useFadeInUp(ref);
-            const [isPaused, setIsPaused] = useState(false);
-            const duplicatedCerts = [...portfolioData.certificates, ...portfolioData.certificates];
-            // Duration scales with the number of certificates so pace stays
-            // readable as more are added, instead of a fixed speed that
-            // outruns a growing list.
-            const scrollDuration = `${portfolioData.certificates.length * 2.4}s`;
-
-            return (
-                <section id="certificates" ref={ref} className="py-16 md:py-24 section-alt fade-in-up" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-                    <div className="container mx-auto px-4 md:px-8">
-                        <div className="text-center mb-8">
-                            <p className="eyebrow text-dim mb-3">{langContent.certificates.eyebrow[lang]}</p>
-                            <h2 className="text-3xl md:text-4xl font-display font-semibold">{langContent.certificates.title[lang]}</h2>
-                        </div>
-                        <div className="flex justify-center mb-8">
-                            <button
-                                onClick={() => setIsPaused(!isPaused)}
-                                aria-pressed={isPaused}
-                                aria-label={isPaused ? langContent.certificates.play[lang] : langContent.certificates.pause[lang]}
-                                className="btn-ghost text-xs font-medium py-2 px-4 rounded-full inline-flex items-center gap-2"
-                            >
-                                <i className={`fas ${isPaused ? 'fa-play' : 'fa-pause'}`}></i>
-                                {isPaused ? langContent.certificates.play[lang] : langContent.certificates.pause[lang]}
-                            </button>
-                        </div>
-                        <div className="carousel-wrapper w-full overflow-hidden relative">
-                            <div
-                                className="flex animate-scroll"
-                                style={{ animationDuration: scrollDuration, animationPlayState: isPaused ? 'paused' : undefined }}
-                            >
-                                {duplicatedCerts.map((cert, index) => (
-                                    <div key={index} className="flex-shrink-0 w-60 mx-3">
-                                        <div className="card p-6 rounded-lg flex flex-col items-center text-center h-full">
-                                            <i className="fas fa-certificate text-3xl mb-4" style={{ color: cert.category === 'product' ? 'var(--gold)' : 'var(--azul)' }}></i>
-                                            <h4 className="text-base font-semibold mb-1">{cert[`name_${lang}`]}</h4>
-                                            <p className="text-sm italic text-dim mb-1">{cert.institution}</p>
-                                            <p className="font-mono text-xs text-dim mb-5">{cert[`hours_${lang}`]}</p>
-                                            <a href={cert.link} target="_blank" rel="noopener noreferrer" className="btn-ghost text-xs font-medium py-2 px-4 rounded-md mt-auto">{langContent.certificates.download[lang]}</a>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const SkillGroup = ({ title, tags, tagClass }) => (
-            <div>
-                <h4 className="font-semibold text-base mb-2">{title}</h4>
-                <div className="flex flex-wrap gap-2">
-                    {tags.map(tag => <span key={tag} className={`${tagClass} text-sm py-1 px-3 rounded-full`}>{tag}</span>)}
+        const AreaCard = ({ area, lang }) => (
+            <a href={`${area}.html`} className="card rounded-lg p-8 flex flex-col items-start text-left no-underline transition-transform" style={{ color: 'var(--ink)' }}>
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-5" style={{ background: 'var(--azul-soft)' }}>
+                    <i className={`fas ${AREA_ICON[area]} text-2xl`} style={{ color: 'var(--azul)' }}></i>
                 </div>
-            </div>
+                <h3 className="text-xl font-display font-semibold mb-2">{areaContent[area].label[lang]}</h3>
+                <p className="text-sm text-dim mb-5">{areaCardCopy[area][lang]}</p>
+                <span className="btn-ghost text-sm font-medium py-2 px-4 rounded-md inline-flex items-center gap-2">
+                    {lang === 'pt' ? 'Ver perfil' : 'View profile'} <i className="fas fa-arrow-right"></i>
+                </span>
+            </a>
         );
 
-        const Skills = ({ lang }) => {
-            const baRef = useRef();
-            const pmRef = useRef();
-            const langRef = useRef();
-            useFadeInUp(baRef);
-            useFadeInUp(pmRef);
-            useFadeInUp(langRef);
-
-            return (
-                <section id="skills" className="py-16 md:py-24">
-                    <div className="container mx-auto px-4 md:px-8">
-                        <div className="text-center mb-16">
-                            <p className="eyebrow text-dim mb-3">{langContent.skills.eyebrow[lang]}</p>
-                            <h2 className="text-3xl md:text-4xl font-display font-semibold">{langContent.skills.title[lang]}</h2>
-                        </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                            <div ref={baRef} className="card p-8 rounded-lg fade-in-up">
-                                <h3 className="text-xl font-display font-semibold mb-6 text-center" style={{ color: 'var(--azul)' }}>{langContent.skills.businessAnalysisTitle[lang]}</h3>
-                                <div className="space-y-6">
-                                    {langContent.skills.businessAnalysis.map(skill => (
-                                        <SkillGroup key={skill.id} title={skill[`title_${lang}`]} tags={skill.tags} tagClass="tag" />
-                                    ))}
-                                </div>
-                            </div>
-                            <div ref={pmRef} className="card p-8 rounded-lg fade-in-up" style={{ animationDelay: '0.1s' }}>
-                                <h3 className="text-xl font-display font-semibold mb-6 text-center" style={{ color: 'var(--gold)' }}>{langContent.skills.productManagementTitle[lang]}</h3>
-                                <div className="space-y-6">
-                                    {langContent.skills.productManagement.map(skill => (
-                                        <SkillGroup key={skill.id} title={skill[`title_${lang}`]} tags={skill.tags} tagClass="tag-gold" />
-                                    ))}
-                                </div>
-                            </div>
-                            <div ref={langRef} className="card p-8 rounded-lg lg:col-span-2 fade-in-up" style={{ animationDelay: '0.2s' }}>
-                                <h3 className="text-xl font-display font-semibold mb-6 text-center" style={{ color: 'var(--azul)' }}>{langContent.skills.langTitle[lang]}</h3>
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    {langContent.skills.languages.map((language) => (
-                                        <div key={language.id} className="text-center">
-                                            <p className="text-lg font-semibold">{language[`name_${lang}`]}</p>
-                                            <p className="font-mono text-sm text-dim">{language[`level_${lang}`]}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const ContactStrip = ({ lang }) => {
-            const ref = useRef();
-            useFadeInUp(ref);
-            return (
-                <section className="py-16 md:py-20 section-alt" style={{ borderTop: '1px solid var(--border)' }}>
-                    <div ref={ref} className="container mx-auto px-4 md:px-8 text-center max-w-2xl fade-in-up">
-                        <h2 className="text-2xl md:text-3xl font-display font-semibold mb-3">{langContent.footer.cta[lang]}</h2>
-                        <p className="text-dim mb-8">{langContent.footer.ctaText[lang]}</p>
-                        <a href="https://www.linkedin.com/in/teles-pedro/" target="_blank" rel="noopener noreferrer" className="btn-primary font-semibold py-3 px-8 rounded-lg text-base inline-block">{langContent.footer.linkedinButton[lang]}</a>
-                    </div>
-                </section>
-            );
-        };
-
-        const Footer = () => {
-            const currentYear = new Date().getFullYear();
-            return (
-                <footer className="py-8" style={{ borderTop: '1px solid var(--border)' }}>
-                    <div className="container mx-auto px-4 md:px-8 text-center text-dim text-sm">
-                        <p>&copy; {currentYear} Pedro Caio Feitosa Teles</p>
-                    </div>
-                </footer>
-            );
-        };
-
-        // ---------------------------------------------------------------
-        // App
-        // ---------------------------------------------------------------
-        function App() {
+        function Hub() {
             const [theme, setTheme] = useState('light');
             const [lang, setLang] = useState('pt');
 
             useEffect(() => {
-                const savedTheme = localStorage.getItem('theme') || 'light';
-                setTheme(savedTheme);
-                const savedLang = localStorage.getItem('lang') || 'pt';
-                setLang(savedLang);
+                setTheme(localStorage.getItem('theme') || 'light');
+                setLang(localStorage.getItem('lang') || 'pt');
             }, []);
 
             useEffect(() => {
@@ -723,23 +318,43 @@
 
             return (
                 <React.Fragment>
-                    <Navbar lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
-                    <main>
-                        <Hero lang={lang} />
-                        <AboutAndExperience lang={lang} />
-                        <Portfolio lang={lang} />
-                        <Certificates lang={lang} />
-                        <Skills lang={lang} />
-                        <ContactStrip lang={lang} />
-                    </main>
-                    <Footer />
+                    <HubNavbar lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
+                    <header className="relative min-h-screen flex items-center justify-center text-center px-4 pt-24 overflow-hidden">
+                        <div className="azulejo-field" aria-hidden="true"></div>
+                        <div className="relative max-w-2xl mx-auto">
+                            <p className="eyebrow text-dim mb-6">{hubContent.eyebrow[lang]}</p>
+                            <img src="images/profile-square.png" alt="Retrato de Pedro Teles" className="hero-frame w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto mb-7 object-cover" />
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold mb-4 leading-tight">
+                                {hubContent.greeting[lang]} <span className="gradient-text">Pedro Teles</span>
+                            </h1>
+                            <p className="text-lg md:text-xl mb-6 text-dim">{hubContent.title[lang]}</p>
+                            <p className="font-mono text-xs md:text-sm text-dim mb-8 tracking-wide">{hubContent.facts[lang]}</p>
+                            <p className="text-base md:text-lg text-dim mb-10">{hubContent.bio[lang]}</p>
+                            <a href="certificates/Curriculo Pedro Teles.pdf" target="_blank" rel="noopener noreferrer" className="btn-ghost text-sm font-medium py-2 px-5 rounded-md inline-flex items-center gap-2">
+                                <i className="fas fa-file-arrow-down"></i>{hubContent.genericCv[lang]}
+                            </a>
+                        </div>
+                    </header>
+                    <section className="py-16 md:py-24 section-alt" style={{ borderTop: '1px solid var(--border)' }}>
+                        <div className="container mx-auto px-4 md:px-8">
+                            <p className="eyebrow text-dim mb-10 text-center">{hubContent.pickerEyebrow[lang]}</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                                {AREA_ORDER.map(area => <AreaCard key={area} area={area} lang={lang} />)}
+                            </div>
+                        </div>
+                    </section>
+                    <footer className="py-8" style={{ borderTop: '1px solid var(--border)' }}>
+                        <div className="container mx-auto px-4 md:px-8 text-center text-dim text-sm">
+                            <p>&copy; {new Date().getFullYear()} Pedro Caio Feitosa Teles</p>
+                        </div>
+                    </footer>
                 </React.Fragment>
             );
         }
 
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
-        root.render(<App />);
+        root.render(<Hub />);
     </script>
 </body>
 
