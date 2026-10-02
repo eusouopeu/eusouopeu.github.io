@@ -1,0 +1,235 @@
+/* Shared stylesheet for every page. Compiled by Tailwind into assets/styles.css (npm run build). */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Ink / Azulejo — dark */
+    --bg: #0B1220;
+    --bg-alt: #0F1A2E;
+    --card: #121C31;
+    --card-hover: #16233C;
+    --border: #223049;
+    --ink: #ECEFF4;
+    --ink-dim: #92A0B8;
+    --azul: #5B93C4;
+    --azul-strong: #2F6690;
+    --btn: #2F6690;
+    --btn-hover: #255476;
+    --gold: #D4AF37;
+    --gold-ink: #D4AF37;
+    --gold-soft: rgba(212, 175, 55, 0.14);
+    --azul-soft: rgba(91, 147, 196, 0.14);
+    --overlay: rgba(11, 18, 32, 0.9);
+}
+
+.light-theme {
+    /* Base — off-white/paper, near-black ink, neutral gray */
+    --bg: #F5F3EE;
+    --bg-alt: #FFFFFF;
+    --card: #FFFFFF;
+    --card-hover: #F7F5F0;
+    --border: #E1DDD2;
+    --ink: #171717;
+    --ink-dim: #636363;
+    /* Signature — petrol/teal */
+    --azul: #076F7A;
+    --azul-strong: #065F69;
+    --btn: #076F7A;
+    --btn-hover: #065F69;
+    /* Accent — burnt orange (decorative); --gold-ink is the AA-safe text variant */
+    --gold: #E76F32;
+    --gold-ink: #B4531F;
+    --gold-soft: rgba(231, 111, 50, 0.12);
+    --azul-soft: rgba(8, 127, 140, 0.10);
+    --overlay: rgba(245, 243, 238, 0.92);
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+html { background: var(--bg); scroll-behavior: smooth; }
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, .font-display { font-family: 'Fraunces', serif; }
+
+.font-mono { font-family: 'IBM Plex Mono', monospace; }
+
+::selection { background: var(--gold-soft); color: var(--ink); }
+
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    background: var(--btn);
+    color: #F8FAFC;
+    font-weight: 600;
+    transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    html { scroll-behavior: auto; }
+}
+
+.text-dim { color: var(--ink-dim); }
+
+.gradient-text {
+    background: linear-gradient(100deg, var(--azul) 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-alt { background-color: var(--bg-alt); }
+
+.card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+}
+.card:hover {
+    border-color: var(--azul);
+    transform: translateY(-4px);
+    background-color: var(--card-hover);
+}
+.card-static:hover { transform: none; }
+
+.btn-primary {
+    background-color: var(--btn);
+    color: #F8FAFC;
+    border: 1px solid var(--btn);
+    transition: all 0.25s ease;
+}
+.btn-primary:hover { background-color: var(--btn-hover); border-color: var(--btn-hover); }
+
+.btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--ink);
+    transition: all 0.25s ease;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold-ink); }
+
+.tag {
+    background-color: var(--azul-soft);
+    color: var(--azul);
+    border: 1px solid transparent;
+}
+.light-theme .tag { color: var(--azul-strong); }
+
+.tag-gold {
+    background-color: var(--gold-soft);
+    color: var(--gold-ink);
+    border: 1px solid transparent;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeInUp 0.7s ease-out forwards;
+}
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+nav.scrolled {
+    background-color: var(--overlay);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.ledger-item {
+    position: relative;
+    padding-left: 28px;
+    border-left: 1px solid var(--border);
+}
+.ledger-item:last-child { border-left: 1px solid transparent; }
+.ledger-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    background-color: var(--gold);
+}
+
+.cert-track {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+.cert-track::-webkit-scrollbar { display: none; }
+.cert-track > * { scroll-snap-align: start; }
+
+/* Signature element: azulejo tile motif, used once, in the hero */
+.azulejo-field {
+    position: absolute;
+    inset: 0;
+    opacity: 0.16;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%235B93C4' stroke-width='1.2'%3E%3Ccircle cx='0' cy='0' r='70'/%3E%3Ccircle cx='200' cy='0' r='70'/%3E%3Ccircle cx='0' cy='200' r='70'/%3E%3Ccircle cx='200' cy='200' r='70'/%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 22%, black 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 22%, black 0%, transparent 75%);
+}
+.light-theme .azulejo-field { opacity: 0.09; }
+
+.hero-frame {
+    border: 1px solid var(--border);
+    box-shadow: 0 0 0 6px var(--azul-soft);
+}
+
+.eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+}
+
+.card-icon-tile {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--azul-soft), transparent 70%);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Case-study long-form text */
+.prose-case p + p { margin-top: 1rem; }
+.prose-case ul { list-style: none; padding: 0; }
+.prose-case li { position: relative; padding-left: 1.25rem; }
+.prose-case li + li { margin-top: 0.5rem; }
+.prose-case li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 6px;
+    height: 6px;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    background-color: var(--gold);
+}

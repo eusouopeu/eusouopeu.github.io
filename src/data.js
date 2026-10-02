@@ -1,9 +1,19 @@
 // ---------------------------------------------------------------
-// Shared content data — loaded before components.js on every page.
-// Plain JS (no JSX) so it can be a normal <script src="data.js">.
+// Shared content data — imported by the components, the client
+// entries and the build-time prerender (build.mjs).
 // ---------------------------------------------------------------
 
-const portfolioData = {
+export const SITE_URL = 'https://eusouopeu.github.io';
+
+export const contact = {
+    email: 'teles.pedro97@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/teles-pedro/',
+    github: 'https://github.com/eusouopeu',
+    // Optional scheduling link (Calendly, Cal.com…). The button only renders when set.
+    calendar: '',
+};
+
+export const portfolioData = {
     projects: [
         {
             id: 1, icon: 'fa-stopwatch', lang: 'PWA',
@@ -19,6 +29,7 @@ const portfolioData = {
             description_pt: "PWA que importa receitas de sites e vídeos, reescala porções e monta a lista de compras do mercado — unificada, somada e por gôndola.",
             description_en: "A PWA that imports recipes from sites and videos, rescales portions, and builds a unified, aisle-sorted grocery list.",
             link: "https://eusouopeu.github.io/dumbfood",
+            caseStudy: 'dumbfood',
             areas: ['produto'],
         },
         {
@@ -123,7 +134,7 @@ const portfolioData = {
     ],
 };
 
-const areaContent = {
+export const areaContent = {
     financas: {
         label: { pt: 'Finanças', en: 'Finance' },
         heroTitle: { pt: 'Análise Financeira · Indicadores de Desempenho', en: 'Financial Analysis · Performance Indicators' },
@@ -170,7 +181,7 @@ const areaContent = {
     },
 };
 
-const skillsByArea = {
+export const skillsByArea = {
     financas: [
         { id: 1, title_pt: "Gestão", title_en: "Management", tags: ["Análise SWOT", "Balanced Scorecard (BSC)", "Benchmarking", "Análise de Demonstrações (BP, DRE, DFC)", "Indicadores Financeiros", "Payback, VPL, TIR"] },
         { id: 2, title_pt: "Ferramentas e Linguagens", title_en: "Tools & Languages", tags: ["Excel (Tabelas Dinâmicas, PROCX)", "SQL", "React.js", "Claude Code", "Canva"] },
@@ -194,20 +205,20 @@ const skillsByArea = {
     ],
 };
 
-const languages = [
+export const languages = [
     { id: 1, name_pt: "Português", name_en: "Portuguese", level_pt: "Nativo", level_en: "Native" },
     { id: 2, name_pt: "Inglês", name_en: "English", level_pt: "Fluente", level_en: "Fluent" },
     { id: 3, name_pt: "Italiano", name_en: "Italian", level_pt: "Fluente", level_en: "Fluent" },
     { id: 4, name_pt: "Mandarim", name_en: "Mandarin", level_pt: "Intermediário (HSK 3)", level_en: "Intermediate (HSK 3)" },
 ];
 
-const experienceJobs = [
+export const experienceJobs = [
     { id: 1, date_pt: "Ago 2024 — Jan 2025", date_en: "Aug 2024 — Jan 2025", title_pt: "Gerente de Exomarketing", title_en: "Exomarketing Manager", company: "Empresa Júnior de Informática da UFBA (InfoJr)" },
     { id: 2, date_pt: "Abr 2024 — Jul 2024", date_en: "Apr 2024 — Jul 2024", title_pt: "Desenvolvedor Web (Trainee)", title_en: "Web Developer (Trainee)", company: "Empresa Júnior de Informática da UFBA (InfoJr)" },
     { id: 3, date_pt: "Set 2023 — Jun 2024", date_en: "Sep 2023 — Jun 2024", title_pt: "Presidente e Co-fundador", title_en: "President & Co-founder", company: "Liga Acadêmica Transdisciplinar de Tecnologia e Inovação (LATTI), UFBA" },
 ];
 
-const langContent = {
+export const langContent = {
     nav: {
         about: { pt: "Sobre", en: "About" },
         experience: { pt: "Experiência", en: "Experience" },
@@ -234,6 +245,7 @@ const langContent = {
         title: { pt: "Projetos Recentes", en: "Recent Projects" },
         subtitle: { pt: "Projetos e estudos de caso relacionados a esta área.", en: "Projects and case studies related to this area." },
         view: { pt: "Ver projeto", en: "View project" },
+        caseStudy: { pt: "Estudo de caso", en: "Case study" },
     },
     certificates: {
         eyebrow: { pt: "REGISTRO", en: "RECORD" },
@@ -252,5 +264,21 @@ const langContent = {
     footer: {
         cta: { pt: "Vamos conversar", en: "Let's talk" },
         linkedinButton: { pt: "Falar no LinkedIn", en: "Message on LinkedIn" },
+        emailButton: { pt: "Enviar e-mail", en: "Send an email" },
+        copyEmail: { pt: "Copiar e-mail", en: "Copy email" },
+        copied: { pt: "E-mail copiado", en: "Email copied" },
+        calendarButton: { pt: "Agendar conversa", en: "Book a call" },
+    },
+    a11y: {
+        skip: { pt: "Pular para o conteúdo", en: "Skip to content" },
+        themeToLight: { pt: "Ativar tema claro", en: "Switch to light theme" },
+        themeToDark: { pt: "Ativar tema escuro", en: "Switch to dark theme" },
+        langToggle: { pt: "Ver site em inglês", en: "View site in Portuguese" },
+        menuOpen: { pt: "Abrir menu", en: "Open menu" },
+        menuClose: { pt: "Fechar menu", en: "Close menu" },
+        portrait: { pt: "Retrato de Pedro Teles", en: "Portrait of Pedro Teles" },
+        certList: { pt: "Lista de certificados", en: "Certificate list" },
+        mainNav: { pt: "Seções da página", en: "Page sections" },
+        newTab: { pt: "(abre em nova aba)", en: "(opens in a new tab)" },
     },
 };

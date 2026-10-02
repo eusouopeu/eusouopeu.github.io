@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eusouopeu.github.io/sitemap.xml
